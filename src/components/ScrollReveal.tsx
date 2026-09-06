@@ -4,6 +4,9 @@ import { useEffect } from "react";
 
 export default function ScrollReveal() {
   useEffect(() => {
+    const supportsScrollTimeline = CSS.supports("animation-timeline", "view()");
+    if (supportsScrollTimeline) return;
+
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
     if (!els.length) return;
