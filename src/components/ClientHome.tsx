@@ -2,30 +2,31 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/components/CartContext";
 import { useToast } from "@/components/Toast";
 
 const products = [
-  { id: 1, name: "SunPower Maxeon 6 400W", category: "panels", price: 399, badge: "Best Seller", desc: "High-efficiency residential solar panel with 22.8% efficiency rating.", img: "https://images.pexels.com/photos/8853509/pexels-photo-8853509.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 2, name: "REC Alpha Pure-R 430W", category: "panels", price: 429, badge: "New", desc: "Premium heterojunction technology for maximum energy production.", img: "https://images.pexels.com/photos/9799702/pexels-photo-9799702.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 10, name: "Panasonic EverVolt HK 410W", category: "panels", price: 449, desc: "All-black premium panel with 21.8% efficiency and 25-year warranty.", img: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 11, name: "Canadian Solar HiKu6 450W", category: "panels", price: 319, badge: "Value Pick", desc: "Mono PERC technology offering excellent performance at a competitive price.", img: "https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 12, name: "LG Prime 2 440W", category: "panels", price: 479, desc: "N-type tandem cell technology with superior low-light performance.", img: "https://images.pexels.com/photos/371900/pexels-photo-371900.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 3, name: "Tesla Powerwall 3", category: "batteries", price: 8500, badge: "Popular", desc: "13.5 kWh home battery with integrated solar inverter.", img: "https://images.pexels.com/photos/33751679/pexels-photo-33751679.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 4, name: "Enphase IQ Battery 5P", category: "batteries", price: 4800, desc: "Modular 5 kWh battery with industry-leading round-trip efficiency.", img: "https://images.pexels.com/photos/33751638/pexels-photo-33751638.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 13, name: "Generac PWRcell 9kWh", category: "batteries", price: 5200, desc: "Modular battery system with fast backup power switching.", img: "https://images.pexels.com/photos/36085816/pexels-photo-36085816.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 14, name: "Enphase IQ8+ Microinverter", category: "inverters", price: 189, badge: "Top Rated", desc: "Module-level power optimization with 97.5% CEC efficiency.", img: "https://images.pexels.com/photos/33438229/pexels-photo-33438229.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 15, name: "SolarEdge Home 10kW", category: "inverters", price: 2199, desc: "Hybrid inverter with integrated EV charger and battery backup.", img: "https://images.pexels.com/photos/37929911/pexels-photo-37929911.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 16, name: "Fronius Primo 7.0", category: "inverters", price: 1899, desc: "SnapINverter design with integrated data communication.", img: "https://images.pexels.com/photos/33751639/pexels-photo-33751639.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 5, name: "ChargePoint Home Flex", category: "chargers", price: 649, badge: "Top Rated", desc: "Level 2 EV charger with 50A capacity and WiFi connectivity.", img: "https://images.pexels.com/photos/5391509/pexels-photo-5391509.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 6, name: "Wallbox Pulsar Plus 48A", category: "chargers", price: 599, desc: "Compact smart EV charger with app control and scheduling.", img: "https://images.pexels.com/photos/27355833/pexels-photo-27355833.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 17, name: "Tesla Universal Wall Connector", category: "chargers", price: 475, badge: "New", desc: "Up to 48A output with Wi-Fi connectivity and load sharing.", img: "https://images.pexels.com/photos/27355829/pexels-photo-27355829.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 18, name: "Emporia Level 2 EV Charger", category: "chargers", price: 399, desc: "48A fast charging with real-time energy monitoring app.", img: "https://images.pexels.com/photos/9800006/pexels-photo-9800006.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 7, name: "Solar Monitoring System", category: "accessories", price: 299, desc: "Real-time monitoring for your solar production and consumption.", img: "https://images.pexels.com/photos/35425767/pexels-photo-35425767.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 8, name: "Rapid Shutdown Device", category: "accessories", price: 189, desc: "NEC 2017/2020 compliant rapid shutdown for solar installations.", img: "https://images.pexels.com/photos/5767595/pexels-photo-5767595.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 9, name: "IronRidge Roof Mount Kit", category: "accessories", price: 349, badge: "Essential", desc: "Complete roof mounting system for residential solar installations.", img: "https://images.pexels.com/photos/9875409/pexels-photo-9875409.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 19, name: "Midnite Solar Surge Protector", category: "accessories", price: 149, desc: "Type 1+2 SPD for comprehensive solar system surge protection.", img: "https://images.pexels.com/photos/30144993/pexels-photo-30144993.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
-  { id: 20, name: "Sense Energy Monitor", category: "accessories", price: 299, badge: "Smart", desc: "Real-time whole-home energy monitoring with AI-powered device detection.", img: "https://images.pexels.com/photos/35573433/pexels-photo-35573433.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2" },
+  { id: 1, name: "SunPower Maxeon 6 400W", category: "panels", price: 399, badge: "Best Seller", desc: "High-efficiency residential solar panel with 22.8% efficiency rating.", img: "https://images.pexels.com/photos/8853509/pexels-photo-8853509.jpeg" },
+  { id: 2, name: "REC Alpha Pure-R 430W", category: "panels", price: 429, badge: "New", desc: "Premium heterojunction technology for maximum energy production.", img: "https://images.pexels.com/photos/9799702/pexels-photo-9799702.jpeg" },
+  { id: 10, name: "Panasonic EverVolt HK 410W", category: "panels", price: 449, desc: "All-black premium panel with 21.8% efficiency and 25-year warranty.", img: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg" },
+  { id: 11, name: "Canadian Solar HiKu6 450W", category: "panels", price: 319, badge: "Value Pick", desc: "Mono PERC technology offering excellent performance at a competitive price.", img: "https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg" },
+  { id: 12, name: "LG Prime 2 440W", category: "panels", price: 479, desc: "N-type tandem cell technology with superior low-light performance.", img: "https://images.pexels.com/photos/371900/pexels-photo-371900.jpeg" },
+  { id: 3, name: "Tesla Powerwall 3", category: "batteries", price: 8500, badge: "Popular", desc: "13.5 kWh home battery with integrated solar inverter.", img: "https://images.pexels.com/photos/33751679/pexels-photo-33751679.jpeg" },
+  { id: 4, name: "Enphase IQ Battery 5P", category: "batteries", price: 4800, desc: "Modular 5 kWh battery with industry-leading round-trip efficiency.", img: "https://images.pexels.com/photos/33751638/pexels-photo-33751638.jpeg" },
+  { id: 13, name: "Generac PWRcell 9kWh", category: "batteries", price: 5200, desc: "Modular battery system with fast backup power switching.", img: "https://images.pexels.com/photos/36085816/pexels-photo-36085816.jpeg" },
+  { id: 14, name: "Enphase IQ8+ Microinverter", category: "inverters", price: 189, badge: "Top Rated", desc: "Module-level power optimization with 97.5% CEC efficiency.", img: "https://images.pexels.com/photos/33438229/pexels-photo-33438229.jpeg" },
+  { id: 15, name: "SolarEdge Home 10kW", category: "inverters", price: 2199, desc: "Hybrid inverter with integrated EV charger and battery backup.", img: "https://images.pexels.com/photos/37929911/pexels-photo-37929911.jpeg" },
+  { id: 16, name: "Fronius Primo 7.0", category: "inverters", price: 1899, desc: "SnapINverter design with integrated data communication.", img: "https://images.pexels.com/photos/33751639/pexels-photo-33751639.jpeg" },
+  { id: 5, name: "ChargePoint Home Flex", category: "chargers", price: 649, badge: "Top Rated", desc: "Level 2 EV charger with 50A capacity and WiFi connectivity.", img: "https://images.pexels.com/photos/5391509/pexels-photo-5391509.jpeg" },
+  { id: 6, name: "Wallbox Pulsar Plus 48A", category: "chargers", price: 599, desc: "Compact smart EV charger with app control and scheduling.", img: "https://images.pexels.com/photos/27355833/pexels-photo-27355833.jpeg" },
+  { id: 17, name: "Tesla Universal Wall Connector", category: "chargers", price: 475, badge: "New", desc: "Up to 48A output with Wi-Fi connectivity and load sharing.", img: "https://images.pexels.com/photos/27355829/pexels-photo-27355829.jpeg" },
+  { id: 18, name: "Emporia Level 2 EV Charger", category: "chargers", price: 399, desc: "48A fast charging with real-time energy monitoring app.", img: "https://images.pexels.com/photos/9800006/pexels-photo-9800006.jpeg" },
+  { id: 7, name: "Solar Monitoring System", category: "accessories", price: 299, desc: "Real-time monitoring for your solar production and consumption.", img: "https://images.pexels.com/photos/35425767/pexels-photo-35425767.jpeg" },
+  { id: 8, name: "Rapid Shutdown Device", category: "accessories", price: 189, desc: "NEC 2017/2020 compliant rapid shutdown for solar installations.", img: "https://images.pexels.com/photos/5767595/pexels-photo-5767595.jpeg" },
+  { id: 9, name: "IronRidge Roof Mount Kit", category: "accessories", price: 349, badge: "Essential", desc: "Complete roof mounting system for residential solar installations.", img: "https://images.pexels.com/photos/9875409/pexels-photo-9875409.jpeg" },
+  { id: 19, name: "Midnite Solar Surge Protector", category: "accessories", price: 149, desc: "Type 1+2 SPD for comprehensive solar system surge protection.", img: "https://images.pexels.com/photos/30144993/pexels-photo-30144993.jpeg" },
+  { id: 20, name: "Sense Energy Monitor", category: "accessories", price: 299, badge: "Smart", desc: "Real-time whole-home energy monitoring with AI-powered device detection.", img: "https://images.pexels.com/photos/35573433/pexels-photo-35573433.jpeg" },
 ];
 
 const faqItems = [
@@ -212,7 +213,7 @@ export default function ClientHome() {
     const formData = new FormData(form);
     formData.append("_subject", "New Quote Request from Cosmic Ray Website");
     try {
-      const res = await fetch("https://formspree.io/f/myeypbqb", {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -255,7 +256,7 @@ export default function ClientHome() {
     const formData = new FormData(form);
     formData.append("_subject", "New Newsletter Subscriber");
     try {
-      const res = await fetch("https://formspree.io/f/mgaezpjb", {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -403,10 +404,10 @@ export default function ClientHome() {
             </div>
             <div className="hero__proof" data-reveal data-reveal-delay="7">
               <div className="hero__proof-avatars">
-                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=1" alt="Satisfied solar customer" width="36" height="36" loading="eager" />
-                <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=1" alt="Happy homeowner with solar panels" width="36" height="36" loading="eager" />
-                <img src="https://images.pexels.com/photos/1181516/pexels-photo-1181516.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=1" alt="Solar energy customer" width="36" height="36" loading="eager" />
-                <img src="https://images.pexels.com/photos/1065082/pexels-photo-1065082.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=1" alt="Ecstatic homeowner with reduced energy bills" width="36" height="36" loading="eager" />
+                <Image src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Satisfied solar customer" width="36" height="36" loading="eager" className="hero__proof-avatar" />
+                <Image src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg" alt="Happy homeowner with solar panels" width="36" height="36" loading="eager" className="hero__proof-avatar" />
+                <Image src="https://images.pexels.com/photos/1181516/pexels-photo-1181516.jpeg" alt="Solar energy customer" width="36" height="36" loading="eager" className="hero__proof-avatar" />
+                <Image src="https://images.pexels.com/photos/1065082/pexels-photo-1065082.jpeg" alt="Ecstatic homeowner with reduced energy bills" width="36" height="36" loading="eager" className="hero__proof-avatar" />
               </div>
               <div className="hero__proof-text">
                 <strong>2,400+</strong> homeowners already saving
@@ -416,6 +417,9 @@ export default function ClientHome() {
           </div>
           <div className="hero__visual" data-reveal data-reveal-delay="3">
             <div className="hero__carousel" id="hero-carousel"
+              role="region"
+              aria-label="Featured solar installations"
+              aria-roledescription="carousel"
               onMouseEnter={() => { if (heroTimerRef.current) clearInterval(heroTimerRef.current); }}
               onMouseLeave={() => {
                 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -425,21 +429,21 @@ export default function ClientHome() {
                 }, 4000);
               }}
             >
-              <div className="hero__carousel-viewport">
+              <div className="hero__carousel-viewport" aria-live="off">
                 {[
-                  { src: "https://images.pexels.com/photos/9875684/pexels-photo-9875684.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2", srcSet: "https://images.pexels.com/photos/9875684/pexels-photo-9875684.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/9875684/pexels-photo-9875684.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w, https://images.pexels.com/photos/9875684/pexels-photo-9875684.jpeg?auto=compress&cs=tinysrgb&w=1200&dpr=2 1200w", sizes: "(max-width: 1024px) 100vw, 600px", alt: "Aerial view of suburban neighborhood with solar panels on rooftops", tag: "Residential Solar", caption: "Powering 2,400+ homes nationwide" },
-                  { src: "https://images.pexels.com/photos/22601673/pexels-photo-22601673.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2", alt: "High angle view of suburban houses with solar panels", tag: "Community Impact", caption: "Neighborhoods transformed by clean energy" },
-                  { src: "https://images.pexels.com/photos/12243093/pexels-photo-12243093.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2", alt: "Solar panels installed on a suburban home with greenery", tag: "Smart Investment", caption: "Increase your home value by 4%" },
-                  { src: "https://images.pexels.com/photos/35417742/pexels-photo-35417742.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2", alt: "Solar panels on rooftop during golden sunset", tag: "Golden Hour", caption: "Harvesting energy from sunrise to sunset" },
+                  { src: "https://images.pexels.com/photos/9875684/pexels-photo-9875684.jpeg", alt: "Aerial view of suburban neighborhood with solar panels on rooftops", tag: "Residential Solar", caption: "Powering 2,400+ homes nationwide" },
+                  { src: "https://images.pexels.com/photos/22601673/pexels-photo-22601673.jpeg", alt: "High angle view of suburban houses with solar panels", tag: "Community Impact", caption: "Neighborhoods transformed by clean energy" },
+                  { src: "https://images.pexels.com/photos/12243093/pexels-photo-12243093.jpeg", alt: "Solar panels installed on a suburban home with greenery", tag: "Smart Investment", caption: "Increase your home value by 4%" },
+                  { src: "https://images.pexels.com/photos/35417742/pexels-photo-35417742.jpeg", alt: "Solar panels on rooftop during golden sunset", tag: "Golden Hour", caption: "Harvesting energy from sunrise to sunset" },
                 ].map((slide, i) => (
-                  <div key={i} className={`hero__slide${heroSlide === i ? " hero__slide--active" : ""}`} data-slide={i}>
-                    <img
+                  <div key={i} className={`hero__slide${heroSlide === i ? " hero__slide--active" : ""}`} data-slide={i} role="group" aria-roledescription="slide" aria-label={`Slide ${i + 1} of 4: ${slide.tag}`}>
+                    <Image
                       src={slide.src}
-                      {...("srcSet" in slide && slide.srcSet ? { srcSet: slide.srcSet, sizes: slide.sizes } : {})}
                       alt={slide.alt}
                       width={600}
                       height={400}
-                      {...(i === 0 ? { fetchPriority: "high" } : { loading: "lazy" })}
+                      sizes="(max-width: 1024px) 100vw, 600px"
+                      {...(i === 0 ? { priority: true } : { loading: "lazy" })}
                     />
                     <div className="hero__slide-overlay" />
                     <div className="hero__slide-content">
@@ -634,11 +638,12 @@ export default function ClientHome() {
           </div>
           <div className="bento">
             <div className="bento__card bento__card--large">
-              <img
-                src="https://images.pexels.com/photos/7211069/pexels-photo-7211069.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
+              <Image
+                src="https://images.pexels.com/photos/7211069/pexels-photo-7211069.jpeg"
                 alt="Aerial view of solar panels on rooftop in a European city"
                 width="800"
                 height="600"
+                sizes="(max-width: 1024px) 100vw, 800px"
                 loading="lazy"
               />
               <div className="bento__card-content">
@@ -757,7 +762,7 @@ export default function ClientHome() {
             {visibleProducts.map((p, i) => (
               <article key={p.id} className="product-card" style={{ animationDelay: `${i * 0.08}s` }}>
                 <div className="product-card__img">
-                  <img src={p.img} alt={p.name} width="400" height="300" loading="lazy" />
+                  <Image src={p.img} alt={p.name} width="400" height="300" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
                   {p.badge && <span className="product-card__badge">{p.badge}</span>}
                 </div>
                 <div className="product-card__body">
@@ -810,14 +815,14 @@ export default function ClientHome() {
           </div>
           <div className="process-grid">
             {[
-              { img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2", alt: "Solar energy consultant reviewing home energy usage on tablet", num: "01", title: "Free Assessment", desc: "We analyze your energy usage, roof, and sun exposure." },
-              { img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2", alt: "Engineer designing custom solar panel layout for residential roof", num: "02", title: "Custom Design", desc: "Tailored system design that maximizes production." },
-              { img: "https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2", alt: "Technician installing solar panels on rooftop", num: "03", title: "Expert Install", desc: "Certified technicians install in 1-2 days." },
-              { img: "https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2", alt: "Homeowner monitoring solar energy production on smartphone app", num: "04", title: "Start Saving", desc: "Net metering setup and immediate energy production." },
+              { img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg", alt: "Solar energy consultant reviewing home energy usage on tablet", num: "01", title: "Free Assessment", desc: "We analyze your energy usage, roof, and sun exposure." },
+              { img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg", alt: "Engineer designing custom solar panel layout for residential roof", num: "02", title: "Custom Design", desc: "Tailored system design that maximizes production." },
+              { img: "https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg", alt: "Technician installing solar panels on rooftop", num: "03", title: "Expert Install", desc: "Certified technicians install in 1-2 days." },
+              { img: "https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg", alt: "Homeowner monitoring solar energy production on smartphone app", num: "04", title: "Start Saving", desc: "Net metering setup and immediate energy production." },
             ].map((step) => (
               <div className="process-step" key={step.num}>
                 <div className="process-step__img">
-                  <img src={step.img} alt={step.alt} width="400" height="300" loading="lazy" />
+                  <Image src={step.img} alt={step.alt} width="400" height="300" sizes="(max-width: 1024px) 100vw, 400px" loading="lazy" />
                 </div>
                 <div className="process-step__number">{step.num}</div>
                 <h3 className="heading-md">{step.title}</h3>
@@ -858,13 +863,12 @@ export default function ClientHome() {
             </a>
           </div>
           <div className="results__visual">
-            <img
-              src="https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
-              srcSet="https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w, https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=1200&dpr=2 1200w"
-              sizes="(max-width: 1024px) 100vw, 600px"
+            <Image
+              src="https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg"
               alt="Aerial view of solar panel grid on rooftop"
               width="600"
               height="400"
+              sizes="(max-width: 1024px) 100vw, 600px"
               loading="lazy"
             />
           </div>
@@ -911,13 +915,12 @@ export default function ClientHome() {
             </div>
             <div className="about__glimpse-visual">
               <div className="about__glimpse-image-wrap">
-                <img
-                  src="https://images.pexels.com/photos/9875444/pexels-photo-9875444.jpeg?auto=compress&cs=tinysrgb&w=700&dpr=2"
-                  srcSet="https://images.pexels.com/photos/9875444/pexels-photo-9875444.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/9875444/pexels-photo-9875444.jpeg?auto=compress&cs=tinysrgb&w=700&dpr=2 700w, https://images.pexels.com/photos/9875444/pexels-photo-9875444.jpeg?auto=compress&cs=tinysrgb&w=1000&dpr=2 1000w"
-                  sizes="(max-width: 1024px) 100vw, 500px"
+                <Image
+                  src="https://images.pexels.com/photos/9875444/pexels-photo-9875444.jpeg"
                   alt="Solar technician installing panel on rooftop"
                   width="700"
                   height="500"
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   loading="lazy"
                   className="about__glimpse-img"
                 />
@@ -998,7 +1001,7 @@ export default function ClientHome() {
               <div className="testimonial-card__stars">★★★★★</div>
               <blockquote>&quot;Our electricity bill dropped from $280 to $42 per month. Best investment we&apos;ve ever made.&quot;</blockquote>
               <div className="testimonial-card__author">
-                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&dpr=1" alt="Maria Johnson" width="48" height="48" loading="lazy" />
+                <Image src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Maria Johnson" width="48" height="48" loading="lazy" />
                 <div>
                   <strong>Maria Johnson</strong>
                   <span>Austin, TX</span>
@@ -1009,7 +1012,7 @@ export default function ClientHome() {
               <div className="testimonial-card__stars">★★★★★</div>
               <blockquote>&quot;Cosmic Ray handled everything — permits, HOA approval, net metering. I didn&apos;t lift a finger.&quot;</blockquote>
               <div className="testimonial-card__author">
-                <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&dpr=1" alt="Robert Thompson" width="48" height="48" loading="lazy" />
+                <Image src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg" alt="Robert Thompson" width="48" height="48" loading="lazy" />
                 <div>
                   <strong>Robert Thompson</strong>
                   <span>Denver, CO</span>
@@ -1020,7 +1023,7 @@ export default function ClientHome() {
               <div className="testimonial-card__stars">★★★★★</div>
               <blockquote>&quot;We went solar last summer. Our system produces more than we use — credits on our bill now!&quot;</blockquote>
               <div className="testimonial-card__author">
-                <img src="https://images.pexels.com/photos/1181516/pexels-photo-1181516.jpeg?auto=compress&cs=tinysrgb&w=120&h=120&dpr=1" alt="Sarah Chen" width="48" height="48" loading="lazy" />
+                <Image src="https://images.pexels.com/photos/1181516/pexels-photo-1181516.jpeg" alt="Sarah Chen" width="48" height="48" loading="lazy" />
                 <div>
                   <strong>Sarah Chen</strong>
                   <span>Phoenix, AZ</span>
@@ -1191,7 +1194,7 @@ export default function ClientHome() {
             ref={contactFormRef}
             className="contact__form"
             id="contact-form"
-            action="https://formspree.io/f/myeypbqb"
+            action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`}
             method="POST"
             onSubmit={handleContactSubmit}
           >
@@ -1228,6 +1231,9 @@ export default function ClientHome() {
               <label htmlFor="contact-message">Message</label>
               <textarea id="contact-message" name="message" rows={4} placeholder="Tell us about your energy needs..." />
             </div>
+            <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
+            </div>
             <button
               type="submit"
               className="btn btn--primary btn--large btn--full"
@@ -1262,7 +1268,7 @@ export default function ClientHome() {
             ref={newsletterFormRef}
             className="newsletter__form"
             id="newsletter-form"
-            action="https://formspree.io/f/mgaezpjb"
+            action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`}
             method="POST"
             onSubmit={handleNewsletterSubmit}
           >
@@ -1270,6 +1276,7 @@ export default function ClientHome() {
               Email address
             </label>
             <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required />
+            <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
             <button
               type="submit"
               className="btn btn--primary"

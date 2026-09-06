@@ -4,8 +4,14 @@ import { useEffect } from "react";
 
 export default function ScrollReveal() {
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
     if (!els.length) return;
+
+    if (prefersReduced) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

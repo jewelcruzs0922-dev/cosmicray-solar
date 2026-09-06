@@ -29,15 +29,17 @@ export function useCart() {
   return ctx;
 }
 
-export default function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+function getInitialCart(): CartItem[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const stored = localStorage.getItem("cr-cart");
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  return [];
+}
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("cr-cart");
-      if (stored) setCart(JSON.parse(stored));
-    } catch {}
-  }, []);
+export default function CartProvider({ children }: { children: React.ReactNode }) {
+  const [cart, setCart] = useState<CartItem[]>(getInitialCart);
 
   useEffect(() => {
     localStorage.setItem("cr-cart", JSON.stringify(cart));

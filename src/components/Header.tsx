@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/components/CartContext";
 
 const searchablePages = [
@@ -242,6 +243,8 @@ export default function Header() {
         className="mobile-nav"
         aria-hidden={!mobileOpen}
         aria-label="Mobile navigation"
+        role="dialog"
+        aria-modal="true"
       >
         <form
           className="mobile-nav__search"
@@ -465,7 +468,7 @@ export default function Header() {
           ) : (
             cart.map((item) => (
               <div key={item.id} className="cart-item">
-                <img className="cart-item__img" src={item.img} alt={item.name} width="64" height="64" />
+                <Image className="cart-item__img" src={item.img} alt={item.name} width="64" height="64" />
                 <div className="cart-item__info">
                   <div className="cart-item__name">{item.name}</div>
                   <div className="cart-item__price">${item.price.toLocaleString()}</div>

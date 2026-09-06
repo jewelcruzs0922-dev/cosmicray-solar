@@ -72,35 +72,43 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-XXXXXXX');
-            `,
-          }}
-        />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+              `,
+            }}
+          />
+        )}
       </head>
       <body>
         <CartProvider>
         <ToastProvider>
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            __html: process.env.NEXT_PUBLIC_GTM_ID
+              ? `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+              : "",
           }}
         />
         <a href="#main" className="skip-link">
@@ -112,22 +120,24 @@ export default function RootLayout({
         <BackToTop />
         <CookieBanner />
         <ExitPopup />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-              (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-              })();
-            `,
-          }}
-        />
+        {process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID && process.env.NEXT_PUBLIC_TAWK_WIDGET_ID && (
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+                var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+                (function(){
+                  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                  s1.async=true;
+                  s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWK_WIDGET_ID}';
+                  s1.charset='UTF-8';
+                  s1.setAttribute('crossorigin','*');
+                  s0.parentNode.insertBefore(s1,s0);
+                })();
+              `,
+            }}
+          />
+        )}
         <div
           id="aria-live-region"
           aria-live="polite"

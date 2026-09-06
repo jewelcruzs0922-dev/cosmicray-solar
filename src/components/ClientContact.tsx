@@ -14,7 +14,7 @@ export default function ClientContact() {
     setStatus("sending");
 
     try {
-      const res = await fetch("https://formspree.io/f/myeypbqb", {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -74,7 +74,7 @@ export default function ClientContact() {
                 </p>
               </div>
             ) : (
-              <form action="https://formspree.io/f/myeypbqb" method="POST" onSubmit={handleSubmit}>
+              <form action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`} method="POST" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">Full Name *</label>
@@ -127,6 +127,9 @@ export default function ClientContact() {
                     required
                     placeholder="Tell us about your project or question..."
                   />
+                </div>
+                <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+                  <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
                 </div>
                 {status === "error" && (
                   <p style={{ color: "var(--color-red)", fontSize: "var(--text-sm)", marginBottom: "var(--space-4)" }}>

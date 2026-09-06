@@ -402,8 +402,9 @@ export default function SolarTaxCreditsPage() {
           <p className="subheading">
             Get the latest solar tips, guides, and news delivered to your inbox.
           </p>
-          <form className="newsletter__form" action="https://formspree.io/f/mgaezpjb" method="POST">
-            <input type="email" placeholder="Enter your email" aria-label="Email address" />
+          <form className="newsletter__form" action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`} method="POST">
+            <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+            <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
             <button type="submit" className="btn btn--primary">
               Subscribe
             </button>
@@ -447,7 +448,7 @@ export default function SolarTaxCreditsPage() {
             description:
               "A complete guide to the Federal Investment Tax Credit, state incentives, and how to claim every dollar you're entitled to when you go solar.",
             datePublished: "2025-02-01",
-            dateModified: "2025-02-01",
+            dateModified: "2026-08-01",
             author: { "@type": "Organization", name: "Cosmic Ray Solar" },
             publisher: {
               "@type": "Organization",

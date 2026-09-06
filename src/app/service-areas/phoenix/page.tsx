@@ -186,7 +186,7 @@ export default function PhoenixPage() {
             <span className="sa-tag">Goodyear</span>
             <span className="sa-tag">Buckeye</span>
             <span className="sa-tag">Avondale</span>
-            <span className="sa-tag">Tempe</span>
+            <span className="sa-tag">Laveen</span>
             <span className="sa-tag">Central Phoenix</span>
             <span className="sa-tag">Arcadia</span>
             <span className="sa-tag">Ahwatukee</span>

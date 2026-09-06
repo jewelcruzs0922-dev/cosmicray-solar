@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ClientHome from "@/components/ClientHome";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.cosmicray.com",
+  },
+};
 
 export default function Home() {
   const jsonLd = {

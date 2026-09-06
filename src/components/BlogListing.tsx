@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const posts = [
   {
     slug: "/blog/solar-cost-guide",
-    image: "https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2",
+    image: "https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg",
     alt: "Solar panels on residential rooftop",
     tag: "Guide",
     date: "2025-01-15",
@@ -17,7 +18,7 @@ const posts = [
   },
   {
     slug: "/blog/battery-storage-guide",
-    image: "https://images.pexels.com/photos/9800025/pexels-photo-9800025.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2",
+    image: "https://images.pexels.com/photos/9800025/pexels-photo-9800025.jpeg",
     alt: "Tesla Powerwall battery storage system",
     tag: "Battery",
     date: "2025-01-22",
@@ -28,7 +29,7 @@ const posts = [
   },
   {
     slug: "/blog/solar-tax-credits",
-    image: "https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2",
+    image: "https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg",
     alt: "Solar panels in bright sunlight",
     tag: "Savings",
     date: "2025-02-01",
@@ -39,7 +40,7 @@ const posts = [
   },
   {
     slug: "/blog/ev-charging-guide",
-    image: "https://images.pexels.com/photos/27355836/pexels-photo-27355836.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2",
+    image: "https://images.pexels.com/photos/27355836/pexels-photo-27355836.jpeg",
     alt: "EV charger connected to electric car",
     tag: "EV Charging",
     date: "2025-02-10",
@@ -78,7 +79,7 @@ export default function BlogListing() {
     const formData = new FormData(form);
     formData.append("_subject", "New Newsletter Subscriber");
     try {
-      const res = await fetch("https://formspree.io/f/mgaezpjb", {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -137,8 +138,7 @@ export default function BlogListing() {
               <article className="blog-card" key={post.slug}>
                 <div className="blog-card__img">
                   <Link href={post.slug}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={post.image} alt={post.alt} width={600} height={340} loading="lazy" />
+                    <Image src={post.image} alt={post.alt} width={600} height={340} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" />
                   </Link>
                 </div>
                 <div className="blog-card__body">
@@ -173,6 +173,7 @@ export default function BlogListing() {
           ) : (
             <form className="newsletter__form" onSubmit={handleNewsletterSubmit}>
               <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
               <button type="submit" className="btn btn--primary" disabled={newsletterStatus === "sending"}>
                 {newsletterStatus === "sending" ? "Subscribing..." : "Subscribe"}
               </button>

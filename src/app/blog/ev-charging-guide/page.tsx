@@ -517,8 +517,9 @@ export default function EVChargingGuidePage() {
           <p className="subheading">
             Get the latest solar tips, guides, and news delivered to your inbox.
           </p>
-          <form className="newsletter__form" action="https://formspree.io/f/mgaezpjb" method="POST">
-            <input type="email" placeholder="Enter your email" aria-label="Email address" />
+          <form className="newsletter__form" action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`} method="POST">
+            <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+            <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
             <button type="submit" className="btn btn--primary">
               Subscribe
             </button>
@@ -562,7 +563,7 @@ export default function EVChargingGuidePage() {
             description:
               "Pair your solar system with an EV charger and drive on sunshine. We cover costs, chargers, and how to maximize savings.",
             datePublished: "2025-02-10",
-            dateModified: "2025-02-10",
+            dateModified: "2026-08-01",
             author: { "@type": "Organization", name: "Cosmic Ray Solar" },
             publisher: {
               "@type": "Organization",

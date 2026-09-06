@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 
 export default function ExitPopup() {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const close = useCallback(() => {
     setVisible(false);
@@ -28,11 +29,43 @@ export default function ExitPopup() {
 
   useEffect(() => {
     if (!visible) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
+
+    const card = cardRef.current;
+    if (!card) return;
+
+    // Focus the close button when popup opens
+    const closeButton = card.querySelector<HTMLButtonElement>(".exit-popup__close");
+    closeButton?.focus();
+
+    // Focus trap
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusableElements = card.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
     };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [visible, close]);
 
   return (
@@ -41,9 +74,10 @@ export default function ExitPopup() {
       role="dialog"
       aria-label="Special offer"
       aria-hidden={!visible}
+      aria-modal="true"
     >
       <div className="exit-popup__overlay" onClick={close} />
-      <div className="exit-popup__card">
+      <div className="exit-popup__card" ref={cardRef}>
         <button
           className="exit-popup__close"
           type="button"

@@ -1,22 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [displayPath, setDisplayPath] = useState(pathname);
   const [transitioning, setTransitioning] = useState(false);
+  const prevPathname = useRef(pathname);
 
   useEffect(() => {
-    if (pathname !== displayPath) {
+    if (pathname !== prevPathname.current) {
+      prevPathname.current = pathname;
       setTransitioning(true);
       const hash = window.location.hash;
       if (!hash) {
         window.scrollTo({ top: 0, behavior: "instant" });
       }
       const timer = setTimeout(() => {
-        setDisplayPath(pathname);
         setTransitioning(false);
         if (hash) {
           const target = document.querySelector(hash);
@@ -30,7 +30,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       }, 200);
       return () => clearTimeout(timer);
     }
-  }, [pathname, displayPath]);
+  }, [pathname]);
 
   // Handle hash on initial mount (cross-page navigation arriving with hash)
   useEffect(() => {
@@ -39,7 +39,9 @@ export default function PageTransition({ children }: { children: React.ReactNode
       window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
+    let cancelled = false;
     const scrollToHash = () => {
+      if (cancelled) return;
       const target = document.querySelector(hash);
       if (target) {
         const headerH = 72;
@@ -51,6 +53,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       }
     };
     requestAnimationFrame(scrollToHash);
+    return () => { cancelled = true; };
   }, []);
 
   return (
