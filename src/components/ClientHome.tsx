@@ -411,7 +411,7 @@ export default function ClientHome() {
               </div>
               <div className="hero__proof-text">
                 <strong>2,400+</strong> homeowners already saving
-                <div className="hero__proof-stars">★★★★★</div>
+                <div className="hero__proof-stars" aria-hidden="true">★★★★★</div>
               </div>
             </div>
           </div>

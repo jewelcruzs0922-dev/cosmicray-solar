@@ -40,8 +40,10 @@ export default function PageTransition({ children }: { children: React.ReactNode
       return;
     }
     let cancelled = false;
+    let retries = 0;
     const scrollToHash = () => {
-      if (cancelled) return;
+      if (cancelled || retries > 60) return;
+      retries++;
       const target = document.querySelector(hash);
       if (target) {
         const headerH = 72;

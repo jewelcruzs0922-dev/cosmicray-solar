@@ -1,4 +1,4 @@
 interface Window {
-  gtag?: (...args: unknown[]) => void;
-  fbq?: (...args: unknown[]) => void;
+  gtag: (...args: unknown[]) => void;
+  fbq: (...args: unknown[]) => void;
 }

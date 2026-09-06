@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "How Much Do Solar Panels Cost in 2025?",
@@ -266,13 +267,7 @@ export default function SolarCostGuidePage() {
           <p className="subheading">
             Get the latest solar tips, guides, and news delivered to your inbox.
           </p>
-          <form className="newsletter__form" action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`} method="POST">
-            <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
-            <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
-            <button type="submit" className="btn btn--primary">
-              Subscribe
-            </button>
-          </form>
+          <NewsletterForm />
           <p className="newsletter__disclaimer">
             No spam. Unsubscribe anytime.
           </p>

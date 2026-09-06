@@ -335,6 +335,7 @@ export default function Header() {
         aria-hidden={!searchOpen}
         role="dialog"
         aria-label="Search"
+        aria-modal="true"
       >
         <div className="search-overlay__inner">
           <button
@@ -432,6 +433,7 @@ export default function Header() {
         aria-hidden={!cartOpen}
         aria-label="Shopping cart"
         role="dialog"
+        aria-modal="true"
       >
         <div className="cart-sidebar__header">
           <h2>Your Cart</h2>

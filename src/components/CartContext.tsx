@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useCallback, useRef, createContext, useContext } from "react";
 
 export interface CartItem {
   id: number;
@@ -29,7 +29,7 @@ export function useCart() {
   return ctx;
 }
 
-function getInitialCart(): CartItem[] {
+function readCartFromStorage(): CartItem[] {
   if (typeof window === "undefined") return [];
   try {
     const stored = localStorage.getItem("cr-cart");
@@ -39,9 +39,22 @@ function getInitialCart(): CartItem[] {
 }
 
 export default function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>(getInitialCart);
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const hydrated = useRef(false);
 
   useEffect(() => {
+    if (hydrated.current) return;
+    hydrated.current = true;
+    const stored = readCartFromStorage();
+    if (stored.length > 0) {
+      // Hydrate cart from localStorage on first client render
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCart((prev) => (prev.length === 0 ? stored : prev));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated.current) return;
     localStorage.setItem("cr-cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -49,7 +62,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     setCart((prev) => {
       const existing = prev.find((i) => i.id === product.id);
       if (existing) return prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i));
-      return [...prev, { id: product.id, name: product.name, price: product.price, img: product.img, qty: 1 }];
+      return [...prev, { id: product.id, name: product.name, price: product.price, img: product.img, qty: 1, category: product.category }];
     });
   }, []);
 

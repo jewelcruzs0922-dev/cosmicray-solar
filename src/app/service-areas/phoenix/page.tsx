@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Solar Installation in Phoenix",
@@ -86,13 +87,12 @@ export default function PhoenixPage() {
             </Link>
           </div>
           <div>
-            <img
-              src="https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
-              srcSet="https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w"
-              sizes="(max-width: 1024px) 100vw, 500px"
+            <Image
+              src="https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg"
               alt="Solar panels installed on residential rooftops"
               width={800}
               height={600}
+              sizes="(max-width: 1024px) 100vw, 500px"
               loading="lazy"
               style={{
                 borderRadius: "var(--radius-2xl)",
