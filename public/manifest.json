@@ -1,0 +1,17 @@
+{
+  "name": "Cosmic Ray Solar",
+  "short_name": "Cosmic Ray",
+  "description": "Professional solar energy solutions for homes and businesses. Save up to 75% on electricity bills.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a3d2f",
+  "theme_color": "#0a3d2f",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a3d2f'/%3E%3Cpath d='M50 15 L55 35 L75 30 L60 45 L80 50 L60 55 L75 70 L55 65 L50 85 L45 65 L25 70 L40 55 L20 50 L40 45 L25 30 L45 35 Z' fill='%23e8a838' opacity='0.9'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%230a3d2f'/%3E%3Ctext x='50' y='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='16'%3ECR%3C/text%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
