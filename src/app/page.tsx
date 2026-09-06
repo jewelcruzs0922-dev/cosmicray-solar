@@ -57,11 +57,10 @@ export default function Home() {
           "Heat Pumps",
           "Commercial Solar",
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "2400",
-          bestRating: "5",
+        publisher: {
+          "@type": "Organization",
+          name: "Cosmic Ray Solar",
+          url: "https://www.cosmicray.com",
         },
         openingHoursSpecification: [
           {
@@ -83,6 +82,37 @@ export default function Home() {
           "https://linkedin.com/company/cosmicraysolar",
           "https://youtube.com/@cosmicraysolar",
         ],
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.cosmicray.com/#org",
+        name: "Cosmic Ray Solar",
+        url: "https://www.cosmicray.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.cosmicray.com/logo.png",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "2400",
+          bestRating: "5",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.cosmicray.com/#website",
+        name: "Cosmic Ray Solar",
+        url: "https://www.cosmicray.com",
+        publisher: { "@id": "https://www.cosmicray.com/#org" },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://www.cosmicray.com/blog?q={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
+        },
       },
     ],
   };

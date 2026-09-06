@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -105,9 +106,8 @@ export default function CaseStudiesPage() {
           {/* Case Study 1 */}
           <article className="cs-card">
             <div className="cs-card__img">
-              <img
-                src="https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
-                srcSet="https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w"
+              <Image
+                src="https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg"
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Aerial view of solar panels in a residential neighborhood"
                 width={800}
@@ -168,9 +168,8 @@ export default function CaseStudiesPage() {
           {/* Case Study 2 */}
           <article className="cs-card">
             <div className="cs-card__img">
-              <img
-                src="https://images.pexels.com/photos/37083400/pexels-photo-37083400.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
-                srcSet="https://images.pexels.com/photos/37083400/pexels-photo-37083400.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/37083400/pexels-photo-37083400.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w"
+              <Image
+                src="https://images.pexels.com/photos/37083400/pexels-photo-37083400.jpeg"
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Solar panels installed on a residential roof against blue sky"
                 width={800}
@@ -232,9 +231,8 @@ export default function CaseStudiesPage() {
           {/* Case Study 3 */}
           <article className="cs-card">
             <div className="cs-card__img">
-              <img
-                src="https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2"
-                srcSet="https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1 400w, https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2 800w"
+              <Image
+                src="https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg"
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Technician working on solar panel installation with tools"
                 width={800}

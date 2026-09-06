@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
@@ -140,21 +141,23 @@ export default function AboutPage() {
           <div className="about-story__visual" data-reveal="right">
             <div className="about-story__gallery">
               <div className="about-story__img-main">
-                <img
-                  src="https://images.pexels.com/photos/8853507/pexels-photo-8853507.jpeg?auto=compress&cs=tinysrgb&w=700&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/8853507/pexels-photo-8853507.jpeg"
                   alt="Solar technician working on rooftop installation"
                   width="700"
                   height="500"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-story__img-accent">
-                <img
-                  src="https://images.pexels.com/photos/8853510/pexels-photo-8853510.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/8853510/pexels-photo-8853510.jpeg"
                   alt="Team of technicians collaborating"
                   width="400"
                   height="280"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-story__img-badge">
@@ -257,12 +260,13 @@ export default function AboutPage() {
           <div className="about-journey__track">
             <div className="about-journey__card" data-reveal data-reveal-delay="1">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/29206488/pexels-photo-29206488.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/29206488/pexels-photo-29206488.jpeg"
                   alt="Technician installing first solar panel"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -277,12 +281,13 @@ export default function AboutPage() {
             </div>
             <div className="about-journey__card" data-reveal data-reveal-delay="2">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/8853536/pexels-photo-8853536.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/8853536/pexels-photo-8853536.jpeg"
                   alt="Two technicians installing rooftop solar panels"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -297,12 +302,13 @@ export default function AboutPage() {
             </div>
             <div className="about-journey__card" data-reveal data-reveal-delay="3">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/6961088/pexels-photo-6961088.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/6961088/pexels-photo-6961088.jpeg"
                   alt="Team installing solar panels on large rooftop"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -317,12 +323,13 @@ export default function AboutPage() {
             </div>
             <div className="about-journey__card" data-reveal data-reveal-delay="4">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/11645008/pexels-photo-11645008.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/11645008/pexels-photo-11645008.jpeg"
                   alt="Workers completing solar installation"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -337,12 +344,13 @@ export default function AboutPage() {
             </div>
             <div className="about-journey__card" data-reveal data-reveal-delay="5">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/6158914/pexels-photo-6158914.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/6158914/pexels-photo-6158914.jpeg"
                   alt="Professional solar team on project site"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -357,12 +365,13 @@ export default function AboutPage() {
             </div>
             <div className="about-journey__card" data-reveal data-reveal-delay="6">
               <div className="about-journey__card-img">
-                <img
-                  src="https://images.pexels.com/photos/35237908/pexels-photo-35237908.jpeg?auto=compress&cs=tinysrgb&w=600&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/35237908/pexels-photo-35237908.jpeg"
                   alt="Modern residential solar installation"
                   width="600"
                   height="420"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="about-journey__card-body">
@@ -392,12 +401,13 @@ export default function AboutPage() {
           <div className="about-team__grid">
             <div className="about-team__member" data-reveal data-reveal-delay="1">
               <div className="about-team__photo">
-                <img
-                  src="https://images.pexels.com/photos/29267512/pexels-photo-29267512.jpeg?auto=compress&cs=tinysrgb&w=500&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/29267512/pexels-photo-29267512.jpeg"
                   alt="Marcus Chen, Founder & CEO"
                   width="500"
                   height="625"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="about-team__overlay">
                   <p>
@@ -414,12 +424,13 @@ export default function AboutPage() {
             </div>
             <div className="about-team__member" data-reveal data-reveal-delay="2">
               <div className="about-team__photo">
-                <img
-                  src="https://images.pexels.com/photos/6592746/pexels-photo-6592746.jpeg?auto=compress&cs=tinysrgb&w=500&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/6592746/pexels-photo-6592746.jpeg"
                   alt="Sarah Martinez, Head of Operations"
                   width="500"
                   height="625"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="about-team__overlay">
                   <p>
@@ -436,12 +447,13 @@ export default function AboutPage() {
             </div>
             <div className="about-team__member" data-reveal data-reveal-delay="3">
               <div className="about-team__photo">
-                <img
-                  src="https://images.pexels.com/photos/7691694/pexels-photo-7691694.jpeg?auto=compress&cs=tinysrgb&w=500&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/7691694/pexels-photo-7691694.jpeg"
                   alt="David Kim, Lead Engineer"
                   width="500"
                   height="625"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="about-team__overlay">
                   <p>
@@ -458,12 +470,13 @@ export default function AboutPage() {
             </div>
             <div className="about-team__member" data-reveal data-reveal-delay="4">
               <div className="about-team__photo">
-                <img
-                  src="https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg?auto=compress&cs=tinysrgb&w=500&dpr=2"
+                <Image
+                  src="https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg"
                   alt="James Wilson, Installation Director"
                   width="500"
                   height="625"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="about-team__overlay">
                   <p>

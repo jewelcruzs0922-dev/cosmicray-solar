@@ -247,6 +247,26 @@ export default function BatteryStorageGuidePage() {
         </div>
       </section>
 
+      <section className="post-related">
+        <div className="post-related__inner">
+          <h2 className="heading-md">Related Guides</h2>
+          <div className="post-related__grid">
+            <Link href="/blog/solar-cost-guide" className="post-related__card">
+              <span className="post-related__tag">Guide</span>
+              <span className="post-related__title">How Much Do Solar Panels Cost in 2025?</span>
+            </Link>
+            <Link href="/blog/solar-tax-credits" className="post-related__card">
+              <span className="post-related__tag">Savings</span>
+              <span className="post-related__title">Solar Tax Credits 2025: How to Get 30% Off</span>
+            </Link>
+            <Link href="/blog/ev-charging-guide" className="post-related__card">
+              <span className="post-related__tag">EV Charging</span>
+              <span className="post-related__title">Charge Your EV With Solar: Complete Guide</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="newsletter">
         <div className="newsletter__inner">
           <h2 className="heading-xl">Stay Informed</h2>
@@ -298,11 +318,13 @@ export default function BatteryStorageGuidePage() {
             publisher: {
               "@type": "Organization",
               name: "Cosmic Ray Solar",
+              url: "https://www.cosmicray.com",
               logo: {
                 "@type": "ImageObject",
                 url: "https://www.cosmicray.com/logo.png",
               },
             },
+            wordCount: 1500,
             image:
               "https://images.pexels.com/photos/9800025/pexels-photo-9800025.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
             mainEntityOfPage: {

@@ -397,6 +397,26 @@ export default function SolarTaxCreditsPage() {
         </div>
       </section>
 
+      <section className="post-related">
+        <div className="post-related__inner">
+          <h2 className="heading-md">Related Guides</h2>
+          <div className="post-related__grid">
+            <Link href="/blog/solar-cost-guide" className="post-related__card">
+              <span className="post-related__tag">Guide</span>
+              <span className="post-related__title">How Much Do Solar Panels Cost in 2025?</span>
+            </Link>
+            <Link href="/blog/battery-storage-guide" className="post-related__card">
+              <span className="post-related__tag">Battery</span>
+              <span className="post-related__title">Home Battery Storage: Is It Worth It?</span>
+            </Link>
+            <Link href="/blog/ev-charging-guide" className="post-related__card">
+              <span className="post-related__tag">EV Charging</span>
+              <span className="post-related__title">Charge Your EV With Solar: Complete Guide</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="newsletter">
         <div className="newsletter__inner">
           <h2 className="heading-xl">Stay Informed</h2>
@@ -448,11 +468,13 @@ export default function SolarTaxCreditsPage() {
             publisher: {
               "@type": "Organization",
               name: "Cosmic Ray Solar",
+              url: "https://www.cosmicray.com",
               logo: {
                 "@type": "ImageObject",
                 url: "https://www.cosmicray.com/logo.png",
               },
             },
+            wordCount: 2200,
             image:
               "https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
             mainEntityOfPage: {

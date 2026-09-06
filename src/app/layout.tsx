@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
 import ExitPopup from "@/components/ExitPopup";
+import AnalyticsLoader from "@/components/AnalyticsLoader";
 import { ToastProvider } from "@/components/Toast";
 import CartProvider from "@/components/CartContext";
 import PageTransition from "@/components/PageTransition";
@@ -72,34 +74,6 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-                `,
-              }}
-            />
-          </>
-        )}
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
-              `,
-            }}
-          />
-        )}
       </head>
       <body>
         <CartProvider>
@@ -120,22 +94,12 @@ export default function RootLayout({
         <BackToTop />
         <CookieBanner />
         <ExitPopup />
+        <AnalyticsLoader />
         {process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID && process.env.NEXT_PUBLIC_TAWK_WIDGET_ID && (
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: `
-                var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-                (function(){
-                  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                  s1.async=true;
-                  s1.src='https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWK_WIDGET_ID}';
-                  s1.charset='UTF-8';
-                  s1.setAttribute('crossorigin','*');
-                  s0.parentNode.insertBefore(s1,s0);
-                })();
-              `,
-            }}
+          <Script
+            id="tawk-to"
+            src={`https://embed.tawk.to/${process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID}/${process.env.NEXT_PUBLIC_TAWK_WIDGET_ID}`}
+            strategy="lazyOnload"
           />
         )}
         <div
@@ -143,7 +107,6 @@ export default function RootLayout({
           aria-live="polite"
           aria-atomic="true"
           className="sr-only"
-          style={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden", clip: "rect(0,0,0,0)" }}
         />
         </ToastProvider>
         </CartProvider>
