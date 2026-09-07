@@ -79,14 +79,13 @@ export default function HeroSection() {
             Now serving nationwide
           </motion.div>
           <h1 className="hero__title">
-            <motion.span className="hero__title-line hero__title-line--small" custom={1} variants={fadeUp} initial="hidden" animate="visible">Solar energy for</motion.span>
+            <motion.span className="hero__title-line" custom={1} variants={fadeUp} initial="hidden" animate="visible">Go solar.</motion.span>
             <motion.span className="hero__title-line" custom={2} variants={fadeUp} initial="hidden" animate="visible">
-              your <em className="hero__title-accent">home</em>
+              Start <em className="hero__title-accent">saving.</em>
             </motion.span>
-            <motion.span className="hero__title-line hero__title-line--accent" custom={3} variants={fadeUp} initial="hidden" animate="visible">your future</motion.span>
           </h1>
           <motion.p className="hero__subtitle" custom={4} variants={fadeUp} initial="hidden" animate="visible">
-            Professional solar installations that cut your electricity bills by up to 75%. We handle everything — from permits to net metering setup.
+            We install solar panels on homes. Most customers save $1,847 a year. We handle permits, installation, and net metering.
           </motion.p>
           <motion.div className="hero__actions" custom={5} variants={fadeUp} initial="hidden" animate="visible">
             <MagneticButton className="btn btn--primary btn--large" href="/schedule">
