@@ -58,6 +58,9 @@ export default function FaqSection() {
 
   return (
     <section className="faq" id="faq">
+      <div className="faq__bg-shape faq__bg-shape--1" aria-hidden="true" />
+      <div className="faq__bg-shape faq__bg-shape--2" aria-hidden="true" />
+      <div className="faq__bg-stripe" aria-hidden="true" />
       <div className="faq__inner">
         <div className="faq__header">
           <span className="label">Common Questions</span>

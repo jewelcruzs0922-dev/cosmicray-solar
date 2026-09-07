@@ -41,6 +41,12 @@ export default function QuoteEstimator() {
 
   return (
     <section className="quote-estimator" aria-label="Solar Quote Estimator">
+      <div className="qe__bg-blob qe__bg-blob--1" aria-hidden="true" />
+      <div className="qe__bg-blob qe__bg-blob--2" aria-hidden="true" />
+      <div className="qe__bg-blob qe__bg-blob--3" aria-hidden="true" />
+      <div className="qe__bg-line qe__bg-line--1" aria-hidden="true" />
+      <div className="qe__bg-line qe__bg-line--2" aria-hidden="true" />
+      <div className="qe__bg-line qe__bg-line--3" aria-hidden="true" />
       <div className="quote-estimator__inner">
         <div className="quote-estimator__header">
           <span className="label">Instant Estimate</span>

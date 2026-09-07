@@ -17,6 +17,11 @@ export default function ReviewsSection() {
 
   return (
     <section className="reviews" aria-label="Customer Reviews">
+      <div className="reviews__bg-orb reviews__bg-orb--1" aria-hidden="true" />
+      <div className="reviews__bg-orb reviews__bg-orb--2" aria-hidden="true" />
+      <div className="reviews__bg-orb reviews__bg-orb--3" aria-hidden="true" />
+      <div className="reviews__bg-ring reviews__bg-ring--1" aria-hidden="true" />
+      <div className="reviews__bg-ring reviews__bg-ring--2" aria-hidden="true" />
       <div className="reviews__inner">
         <div className="reviews__header">
           <div className="reviews__header-top">
