@@ -44,7 +44,7 @@ export default function SolutionsGrid() {
         </div>
         <div className="sol-grid">
           <a href="/schedule" className="sol-card sol-card--hero">
-            <Image src={services[0].img} alt={services[0].title} width={800} height={500} sizes="100vw" fill className="sol-card__img" />
+            <Image src={services[0].img} alt={services[0].title} width={800} height={500} sizes="100vw" className="sol-card__img" />
             <div className="sol-card__overlay" />
             <div className="sol-card__content">
               <span className="sol-card__num">01</span>
@@ -56,7 +56,7 @@ export default function SolutionsGrid() {
           </a>
           {services.slice(1).map((s, i) => (
             <a href="/schedule" className="sol-card" key={s.title}>
-              <Image src={s.img} alt={s.title} width={400} height={300} sizes="(max-width: 768px) 100vw, 400px" fill className="sol-card__img" />
+              <Image src={s.img} alt={s.title} width={400} height={300} sizes="(max-width: 768px) 100vw, 400px" className="sol-card__img" />
               <div className="sol-card__overlay" />
               <div className="sol-card__content">
                 <span className="sol-card__num">0{i + 2}</span>
