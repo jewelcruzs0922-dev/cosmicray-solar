@@ -436,7 +436,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .spc__price{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-accent)}
 .spc__cart{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:transparent;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease}
 .spc__cart:hover{background:var(--color-accent);border-color:var(--color-accent);color:var(--color-dark)}
-.shop__bottom{text-align:center;margin-top:var(--space-12)}
+.shop__bottom{margin-top:var(--space-12)}
+.shop__bottom-inner{display:flex;flex-direction:column;gap:var(--space-6);align-items:center;padding:var(--space-8) var(--space-10);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-xl);text-align:center}
+@media(min-width:640px){.shop__bottom-inner{flex-direction:row;text-align:left;justify-content:space-between}}
+.shop__bottom-title{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:white;margin-bottom:var(--space-2)}
+.shop__bottom-desc{font-size:var(--text-sm);color:rgba(255,255,255,0.6);line-height:1.6}
 .product-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;transition:all var(--duration) var(--ease);display:flex;flex-direction:column;opacity:0;transform:translateY(20px);animation:productFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards}
 .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .product-card__img{position:relative;aspect-ratio:4/3;background:var(--color-surface);overflow:hidden}
