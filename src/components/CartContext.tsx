@@ -13,7 +13,7 @@ export interface CartItem {
 
 interface CartContextValue {
   cart: CartItem[];
-  addToCart: (product: CartItem & { category?: string }) => void;
+  addToCart: (product: Omit<CartItem, "qty">) => void;
   removeFromCart: (productId: number) => void;
   updateQty: (productId: number, delta: number) => void;
   clearCart: () => void;
@@ -60,7 +60,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     localStorage.setItem("cr-cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = useCallback((product: CartItem & { category?: string }) => {
+  const addToCart = useCallback((product: Omit<CartItem, "qty">) => {
     setCart((prev) => {
       const existing = prev.find((i) => i.id === product.id);
       if (existing) return prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i));

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { products } from "@/data/products";
+import { useCart } from "@/components/CartContext";
 
 const featured = products.slice(0, 5);
 
@@ -16,6 +17,7 @@ const colors = [
 
 export default function ShopSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { addToCart } = useCart();
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -56,7 +58,7 @@ export default function ShopSection() {
                 <p className="shop__slide-desc">{p.desc}</p>
                 <div className="shop__slide-bottom">
                   <span className="shop__slide-price">${p.price.toLocaleString()}</span>
-                  <button type="button" className="shop__slide-btn">Add to Cart</button>
+                  <button type="button" className="shop__slide-btn" onClick={() => addToCart({ id: p.id, name: p.name, price: p.price, img: p.img, category: p.category })}>Add to Cart</button>
                 </div>
               </div>
             </div>

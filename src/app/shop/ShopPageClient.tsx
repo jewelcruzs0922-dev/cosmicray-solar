@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { products, type Product } from "@/data/products";
+import { useCart } from "@/components/CartContext";
 
 const categories = ["all", "panels", "batteries", "inverters", "chargers", "accessories"] as const;
 
 function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCart();
   return (
     <div className="shop-page-card">
       <div className="shop-page-card__img">
@@ -19,7 +21,7 @@ function ProductCard({ product }: { product: Product }) {
         <p className="shop-page-card__desc">{product.desc}</p>
         <div className="shop-page-card__footer">
           <span className="shop-page-card__price">${product.price.toLocaleString()}</span>
-          <button type="button" className="btn btn--primary btn--small">Add to Cart</button>
+          <button type="button" className="btn btn--primary btn--small" onClick={() => addToCart({ id: product.id, name: product.name, price: product.price, img: product.img, category: product.category })}>Add to Cart</button>
         </div>
       </div>
     </div>
