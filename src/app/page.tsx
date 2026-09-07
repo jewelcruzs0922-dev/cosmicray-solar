@@ -59,25 +59,6 @@ export default function Home() {
           "Heat Pumps",
           "Commercial Solar",
         ],
-        publisher: {
-          "@type": "Organization",
-          name: "Cosmic Ray Solar",
-          url: "https://www.cosmicray.com",
-        },
-        openingHoursSpecification: [
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            opens: "08:00",
-            closes: "18:00",
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: "Saturday",
-            opens: "09:00",
-            closes: "14:00",
-          },
-        ],
         sameAs: [
           "https://facebook.com/cosmicraysolar",
           "https://instagram.com/cosmicraysolar",
@@ -86,27 +67,11 @@ export default function Home() {
         ],
       },
       {
-        "@type": "Organization",
-        "@id": "https://www.cosmicray.com/#org",
-        name: "Cosmic Ray Solar",
-        url: "https://www.cosmicray.com",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.cosmicray.com/logo.png",
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "2400",
-          bestRating: "5",
-        },
-      },
-      {
         "@type": "WebSite",
-        "@id": "https://www.cosmicray.com/#website",
-        name: "Cosmic Ray Solar",
-        url: "https://www.cosmicray.com",
-        publisher: { "@id": "https://www.cosmicray.com/#org" },
+        "@id": `${SITE_URL}/#website`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        publisher: { "@id": `${SITE_URL}/#organization` },
       },
     ],
   };

@@ -20,6 +20,7 @@ const fadeUp: Variants = {
 export default function HeroSection() {
   const [heroSlide, setHeroSlide] = useState(0);
   const [userInteracted, setUserInteracted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -35,6 +36,20 @@ export default function HeroSection() {
       if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length);
     }, 4000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, []);
+
+  const togglePause = useCallback(() => {
+    setIsPaused((prev) => {
+      const next = !prev;
+      if (next) {
+        if (timerRef.current) clearInterval(timerRef.current);
+      } else {
+        timerRef.current = setInterval(() => {
+          if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length);
+        }, 4000);
+      }
+      return next;
+    });
   }, []);
 
   const goToSlide = useCallback((index: number) => {
@@ -124,6 +139,13 @@ export default function HeroSection() {
               {slides.map((_, i) => (
                 <button key={i} className={`hero__carousel-dot${heroSlide === i ? " hero__carousel-dot--active" : ""}`} data-dot={i} aria-label={`Slide ${i + 1}`} onClick={() => goToSlide(i)} />
               ))}
+              <button className="hero__carousel-pause" aria-label={isPaused ? "Resume slideshow" : "Pause slideshow"} onClick={togglePause}>
+                {isPaused ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+                )}
+              </button>
             </div>
           </div>
           <motion.div className="hero__float-card hero__float-card--savings" animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>

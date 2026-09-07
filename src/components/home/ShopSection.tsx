@@ -45,7 +45,7 @@ export default function ShopSection() {
           {visible.map((p, i) => (
             <article key={p.id} className="product-card" style={{ animationDelay: `${i * 0.08}s` }}>
               <div className="product-card__img">
-                <Image src={p.img} alt={p.name} width="400" height="300" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
+                <Image src={p.img} alt={p.name} width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
                 {p.badge && <span className="product-card__badge">{p.badge}</span>}
               </div>
               <div className="product-card__body">

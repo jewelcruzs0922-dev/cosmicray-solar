@@ -80,6 +80,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .nav-dropdown__menu a span{display:block;font-size:var(--text-xs);color:var(--color-text-muted);font-weight:400;margin-top:1px}
 /* RIGHT SECTION */
 .header__right{display:flex;align-items:center;gap:var(--space-1);flex-shrink:0}
+.header__mobile-phone{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--radius-full);color:var(--color-text-secondary);transition:all var(--duration) var(--ease);text-decoration:none}
+.header__mobile-phone:hover{background:var(--color-surface);color:var(--color-primary)}
 .header__search-btn{display:none}
 .header__cart-btn{display:none}
 .header__phone{display:none}
@@ -100,6 +102,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .header__cart-btn:hover{background:var(--color-surface);color:var(--color-text)}
 .header__cart-count{position:absolute;top:0;right:0;background:var(--color-accent);color:var(--color-dark);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .header__burger{display:none}
+.header__mobile-phone{display:none}
 .header__cta{display:inline-flex;margin-left:var(--space-2)}
 }
 .mobile-nav{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;z-index:999;background:var(--color-white);padding:var(--space-6);transform:translateY(-100%);opacity:0;visibility:hidden;transition:all 0.4s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch;display:block}
@@ -286,6 +289,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .hero__carousel-nav{position:absolute;bottom:var(--space-5);right:var(--space-6);display:flex;gap:var(--space-2);z-index:3}
 .hero__carousel-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,0.35);cursor:pointer;padding:0;transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
 .hero__carousel-dot--active{width:28px;border-radius:4px;background:white}
+.hero__carousel-pause{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:all 0.3s ease;margin-left:var(--space-1)}
+.hero__carousel-pause:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.6)}
 /* ── Floating Cards with 3D ── */
 .hero__float-card{position:absolute;display:flex;align-items:center;gap:var(--space-3);background:white;padding:var(--space-4) var(--space-5);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);z-index:3;backface-visibility:hidden;transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)}
 .hero__float-card:hover{transform:translateY(-4px) scale(1.03)!important}
@@ -476,9 +481,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .testimonial-card__stars{color:var(--color-accent);font-size:var(--text-sm);letter-spacing:2px;margin-bottom:var(--space-5)}
 .testimonial-card blockquote{font-size:var(--text-base);line-height:1.7;margin-bottom:var(--space-6);font-style:normal}
 .testimonial-card__author{display:flex;align-items:center;gap:var(--space-3)}
-.testimonial-card__author img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.testimonial-card__avatar{width:48px;height:48px;border-radius:50%;background:var(--color-primary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:var(--text-lg);flex-shrink:0}
 .testimonial-card__author strong{display:block;font-size:var(--text-sm)}
 .testimonial-card__author span{font-size:var(--text-xs);color:var(--color-text-muted)}
+.testimonial-card__savings,.testimonial-card__system{font-size:var(--text-xs);color:var(--color-text-secondary);margin-bottom:var(--space-2)}
+.testimonial-card__savings strong,.testimonial-card__system strong{color:var(--color-text)}
 /* FAQ */
 .faq{padding:var(--space-32) 0;background:var(--color-surface)}
 .faq__inner{max-width:720px;margin:0 auto;padding:0 var(--space-6)}
