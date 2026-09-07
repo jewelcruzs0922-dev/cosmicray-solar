@@ -6,6 +6,14 @@ import { products } from "@/data/products";
 
 const featured = products.slice(0, 5);
 
+const colors = [
+  { bg: "#fdf8f0", accent: "#e8a838", num: "#f0d9a0" },
+  { bg: "#f0f7f4", accent: "#0a3d2f", num: "#b8d8c8" },
+  { bg: "#f0f4fa", accent: "#3b82f6", num: "#b0c8e8" },
+  { bg: "#fdf5f0", accent: "#f97316", num: "#f0c8a8" },
+  { bg: "#f5f0fa", accent: "#8b5cf6", num: "#c8b8e8" },
+];
+
 export default function ShopSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -36,7 +44,7 @@ export default function ShopSection() {
 
         <div className="shop__carousel" ref={scrollRef}>
           {featured.map((p, i) => (
-            <div className="shop__slide" key={p.id}>
+            <div className="shop__slide" key={p.id} style={{ background: colors[i].bg, "--slide-accent": colors[i].accent, "--slide-num": colors[i].num } as React.CSSProperties}>
               <div className="shop__slide-num">{String(i + 1).padStart(2, "0")}</div>
               <div className="shop__slide-img">
                 <Image src={p.img} alt={p.name} width={400} height={300} sizes="40vw" loading="lazy" />
