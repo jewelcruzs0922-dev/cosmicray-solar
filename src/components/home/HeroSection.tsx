@@ -38,13 +38,19 @@ export default function HeroSection() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  useEffect(() => {
-    if (prefersReducedRef.current) return;
+  const startTimer = useCallback(() => {
+    if (prefersReducedRef.current || isPaused) return;
+    if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length);
     }, 4000);
+  }, [isPaused]);
+
+  useEffect(() => {
+    if (prefersReducedRef.current) return;
+    startTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
+  }, [startTimer]);
 
   const togglePause = useCallback(() => {
     setIsPaused((prev) => {
@@ -63,11 +69,8 @@ export default function HeroSection() {
   const goToSlide = useCallback((index: number) => {
     setHeroSlide(index);
     setUserInteracted(true);
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length);
-    }, 4000);
-  }, []);
+    startTimer();
+  }, [startTimer]);
 
   return (
     <section className="hero" ref={sectionRef}>
@@ -125,12 +128,7 @@ export default function HeroSection() {
         <motion.div className="hero__visual" custom={3} variants={fadeUp} initial="hidden" animate="visible" style={{ y: parallaxY }}>
           <div className="hero__carousel" id="hero-carousel" role="region" aria-label="Featured solar installations" aria-roledescription="carousel"
             onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
-            onMouseLeave={() => {
-              if (isPaused) return;
-              const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-              if (prefersReduced) return;
-              timerRef.current = setInterval(() => { if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length); }, 4000);
-            }}
+            onMouseLeave={() => startTimer()}
           >
             <div className="hero__carousel-viewport" aria-live={userInteracted ? "polite" : "off"}>
               {slides.map((slide, i) => (

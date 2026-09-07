@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     // Send to Formspree
     const formspreeRes = await fetch(
-      `https://formspree.io/f/${process.env.FORMSPREE_CONTACT_ID}`,
+      `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

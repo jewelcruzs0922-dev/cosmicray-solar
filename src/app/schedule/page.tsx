@@ -29,7 +29,7 @@ export default function SchedulePage() {
           <span className="label">Book Online</span>
           <h1 className="heading-xl">Schedule an Appointment</h1>
           <p className="subheading">
-            Choose a date and time that works for us. Free assessments, consultations, and installation planning.
+            Choose a date and time that works for you. Free assessments, consultations, and installation planning.
           </p>
         </div>
       </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface VideoItem {
@@ -41,6 +41,15 @@ const videos: VideoItem[] = [
 
 export default function VideoTestimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!activeVideo) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveVideo(null);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [activeVideo]);
 
   return (
     <section className="video-testimonials" aria-label="Video Testimonials">

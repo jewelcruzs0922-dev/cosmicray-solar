@@ -59,9 +59,9 @@ const caseStudiesJsonLd = {
     {
       "@type": "ListItem",
       position: 3,
-      name: "Sunrise Coffee Roasters — Denver, CO",
+      name: "Greenleaf Cafe — Denver, CO",
       description:
-        "Cut operating costs by 60% with a 50kW commercial system.",
+        "Cut electricity bill from $850/mo to near zero with a 50kW commercial system.",
     },
   ],
 };
