@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { PHONE, PHONE_LINK, EMAIL, HEADER_HEIGHT } from "@/lib/constants";
+import { PHONE, PHONE_LINK, EMAIL } from "@/lib/constants";
 
 interface MobileNavProps {
   open: boolean;
@@ -12,22 +11,7 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ open, onClose, onOpenSearch }: MobileNavProps) {
-  const router = useRouter();
   const navRef = useRef<HTMLDivElement>(null);
-
-  const handleQuoteClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onClose();
-    const target = document.querySelector("#contact-form");
-    if (target) {
-      const headerH = HEADER_HEIGHT;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
-      window.scrollTo({ top, behavior: "smooth" });
-      history.replaceState(null, "", "/#contact-form");
-    } else {
-      router.push("/#contact-form");
-    }
-  };
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") { onClose(); return; }
@@ -80,7 +64,7 @@ export default function MobileNav({ open, onClose, onOpenSearch }: MobileNavProp
           <li><Link href="/contact" onClick={onClose}>Contact</Link></li>
           <li><Link href="/financing" onClick={onClose}>Financing</Link></li>
           <li>
-            <Link href="/#contact-form" className="btn btn--primary btn--full" onClick={handleQuoteClick}>
+            <Link href="/schedule" className="btn btn--primary btn--full">
               Get Free Quote
             </Link>
           </li>

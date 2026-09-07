@@ -109,7 +109,7 @@ export default function ClientContact() {
           <h2 className="heading-xl">Ready to Go Solar?</h2>
           <p>Get a free, no-obligation quote today and discover how much you can save with Cosmic Ray Solar.</p>
           <div className="contact-cta__actions">
-            <Link href="/#contact-form" className="btn btn--accent btn--large">Get Free Quote</Link>
+            <Link href="/schedule" className="btn btn--accent btn--large">Get Free Quote</Link>
             <a href={`tel:${PHONE_LINK}`} className="btn btn--outline btn--large btn--outline-light">Call {PHONE}</a>
           </div>
         </div>

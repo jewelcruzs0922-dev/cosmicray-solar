@@ -78,7 +78,7 @@ export default function QuoteEstimator() {
               <div className="qe-slider-labels"><span>$50</span><span>$800</span></div>
             </div>
 
-            <a href="#contact-form" className="btn btn--primary btn--large btn--full">
+            <a href="/schedule" className="btn btn--primary btn--large btn--full">
               Get Exact Quote &rarr;
             </a>
           </div>
@@ -135,7 +135,7 @@ export default function QuoteEstimator() {
               </div>
             </div>
 
-            <a href="#contact-form" className="btn btn--accent btn--large btn--full">
+            <a href="/schedule" className="btn btn--accent btn--large btn--full">
               Get Exact Quote &rarr;
             </a>
           </div>

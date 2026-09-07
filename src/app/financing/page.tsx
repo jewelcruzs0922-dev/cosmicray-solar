@@ -87,7 +87,7 @@ export default function FinancingPage() {
                 <li>Highest return on investment</li>
                 <li>Increase home value immediately</li>
               </ul>
-              <Link href="/#contact-form" className="btn btn--primary btn--full">
+              <Link href="/schedule" className="btn btn--primary btn--full">
                 Get a Quote
               </Link>
             </div>
@@ -115,7 +115,7 @@ export default function FinancingPage() {
                 <li>30% federal tax credit</li>
                 <li>Terms from 5 to 25 years</li>
               </ul>
-              <Link href="/#contact-form" className="btn btn--primary btn--full">
+              <Link href="/schedule" className="btn btn--primary btn--full">
                 Get a Quote
               </Link>
             </div>
@@ -138,7 +138,7 @@ export default function FinancingPage() {
                 <li>Free maintenance included</li>
                 <li>Immediate monthly savings</li>
               </ul>
-              <Link href="/#contact-form" className="btn btn--primary btn--full">
+              <Link href="/schedule" className="btn btn--primary btn--full">
                 Get a Quote
               </Link>
             </div>
@@ -249,7 +249,7 @@ export default function FinancingPage() {
             for you. Start saving with solar — $0 down available.
           </p>
           <div className="city-cta__actions">
-            <Link href="/#contact-form" className="btn btn--accent btn--large">
+            <Link href="/schedule" className="btn btn--accent btn--large">
               Get Free Quote
             </Link>
             <a

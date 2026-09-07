@@ -85,7 +85,7 @@ export default function BlogPostLayout({ slug, title, description, tag, date, da
           <div className="post-cta">
             <h3>Ready to Go Solar?</h3>
             <p>Get a free, no-obligation quote and see how much you can save.</p>
-            <Link href="/#contact-form" className="btn btn--primary btn--large">Get Free Quote</Link>
+            <Link href="/schedule" className="btn btn--primary btn--large">Get Free Quote</Link>
           </div>
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function BlogPostLayout({ slug, title, description, tag, date, da
           <h2 className="heading-xl heading-xl--light">Start Saving With Solar Today</h2>
           <p className="subheading subheading--light">Get a free, no-obligation quote and see how much you can save with solar energy.</p>
           <div className="cta-section__actions">
-            <Link href="/#contact-form" className="btn btn--accent btn--large">Get Free Quote</Link>
+            <Link href="/schedule" className="btn btn--accent btn--large">Get Free Quote</Link>
             <Link href="/about" className="btn btn--outline-light btn--large">Learn About Us</Link>
           </div>
         </div>

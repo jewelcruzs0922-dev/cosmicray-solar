@@ -31,7 +31,7 @@ export default function SavingsCalculator() {
             <div className="calculator__result"><span className="calculator__result-value">{paybackYears} yrs</span><span className="calculator__result-label">Payback Period</span></div>
             <div className="calculator__result calculator__result--highlight"><span className="calculator__result-value">${twentyFiveYrSavings.toLocaleString()}</span><span className="calculator__result-label">25-Year Savings</span></div>
           </div>
-          <a href="#contact-form" className="btn btn--primary btn--large btn--full">Get My Free Quote</a>
+          <a href="/schedule" className="btn btn--primary btn--large btn--full">Get My Free Quote</a>
         </div>
       </div>
     </section>

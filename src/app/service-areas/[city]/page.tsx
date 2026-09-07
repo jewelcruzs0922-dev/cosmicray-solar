@@ -85,7 +85,7 @@ export default async function CityPage({ params }: CityPageProps) {
                   <span className="city-stat__label">{stat.label}</span>
                 </div>
               ))}
-              <Link href="/#contact-form" className="btn btn--primary btn--full">
+              <Link href="/schedule" className="btn btn--primary btn--full">
                 Get Free Quote
               </Link>
               <a href={`tel:${PHONE_LINK}`} className="btn btn--outline btn--full">
@@ -103,7 +103,7 @@ export default async function CityPage({ params }: CityPageProps) {
             Get a free, no-obligation quote today. We&apos;ll analyze your roof, energy usage, and local incentives.
           </p>
           <div className="city-cta__actions">
-            <Link href="/#contact-form" className="btn btn--accent btn--large">Get Free Quote</Link>
+            <Link href="/schedule" className="btn btn--accent btn--large">Get Free Quote</Link>
             <a href={`tel:${PHONE_LINK}`} className="btn btn--outline btn--large">Call {PHONE}</a>
           </div>
         </div>

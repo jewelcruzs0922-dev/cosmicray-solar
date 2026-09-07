@@ -539,7 +539,7 @@ export default function AboutPage() {
             quote today and start saving up to 75% on your electricity bills.
           </p>
           <div className="about-cta__actions">
-            <Link href="/#contact-form" className="btn btn--primary btn--large">
+            <Link href="/schedule" className="btn btn--primary btn--large">
               Get Free Quote
             </Link>
             <a

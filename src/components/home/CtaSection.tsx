@@ -9,7 +9,7 @@ export default function CtaSection() {
         <h2 className="heading-xl heading-xl--light">Start Saving With Solar Today</h2>
         <p className="subheading subheading--light">Get a free, no-obligation quote and see how much you can save with solar energy.</p>
         <div className="cta-section__actions">
-          <a href="#contact-form" className="btn btn--accent btn--large">Get Free Quote</a>
+          <a href="/schedule" className="btn btn--accent btn--large">Get Free Quote</a>
           <Link href="/about" className="btn btn--outline-light btn--large">Learn About Us</Link>
         </div>
       </div>

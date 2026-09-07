@@ -17,7 +17,7 @@ export default function FinancingSection() {
               <li>&#10003; 30% federal tax credit</li>
               <li>&#10003; Increased home value</li>
             </ul>
-            <a href="#contact-form" className="btn btn--primary btn--full">Get Quote</a>
+            <a href="/schedule" className="btn btn--primary btn--full">Get Quote</a>
           </div>
           <div className="financing__card financing__card--featured">
             <span className="financing__badge">Most Popular</span>
@@ -29,7 +29,7 @@ export default function FinancingSection() {
               <li>&#10003; Fixed monthly payments</li>
               <li>&#10003; 30% federal tax credit</li>
             </ul>
-            <a href="#contact-form" className="btn btn--primary btn--full">Get Quote</a>
+            <a href="/schedule" className="btn btn--primary btn--full">Get Quote</a>
           </div>
           <div className="financing__card">
             <h3 className="heading-md">Lease / PPA</h3>
@@ -40,7 +40,7 @@ export default function FinancingSection() {
               <li>&#10003; Free maintenance included</li>
               <li>&#10003; Immediate monthly savings</li>
             </ul>
-            <a href="#contact-form" className="btn btn--primary btn--full">Get Quote</a>
+            <a href="/schedule" className="btn btn--primary btn--full">Get Quote</a>
           </div>
         </div>
       </div>

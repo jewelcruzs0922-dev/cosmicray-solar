@@ -304,7 +304,7 @@ export default function CaseStudiesPage() {
             See how much you could save with solar. Our team will analyze your
             roof, energy usage, and local incentives — 100% free.
           </p>
-          <Link href="/#contact-form" className="btn btn--primary btn--large">
+          <Link href="/schedule" className="btn btn--primary btn--large">
             Get Free Quote →
           </Link>
         </div>
