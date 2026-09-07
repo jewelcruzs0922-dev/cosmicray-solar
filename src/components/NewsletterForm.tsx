@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FORMSPREE_NEWSLETTER_ID } from "@/lib/constants";
 
 export default function NewsletterForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -12,7 +13,7 @@ export default function NewsletterForm() {
     formData.append("_subject", "New Newsletter Subscriber");
     setStatus("sending");
     try {
-      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`, {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_NEWSLETTER_ID}`, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -20,6 +21,7 @@ export default function NewsletterForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        setTimeout(() => setStatus("idle"), 3000);
       } else {
         throw new Error("Failed");
       }
@@ -30,13 +32,13 @@ export default function NewsletterForm() {
   };
 
   if (status === "sent") {
-    return <p style={{ color: "var(--color-primary)", fontWeight: 600 }}>Thanks for subscribing!</p>;
+    return <p className="newsletter__success">Thanks for subscribing!</p>;
   }
 
   return (
     <form className="newsletter__form" onSubmit={handleSubmit}>
       <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
-      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
+      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="form-honeypot" aria-hidden="true" />
       <button type="submit" className="btn btn--primary" disabled={status === "sending"}>
         {status === "sending" ? "Subscribing..." : status === "error" ? "Error - Try Again" : "Subscribe"}
       </button>

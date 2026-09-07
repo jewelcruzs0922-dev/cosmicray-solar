@@ -11,28 +11,20 @@ export default function AnalyticsLoader() {
     if (hydrated.current) return;
     hydrated.current = true;
     const stored = localStorage.getItem("cr-cookie-consent");
-    setConsent((prev) => (prev === null ? stored : prev));
+    if (stored) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setConsent(stored);
+      return;
+    }
 
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === "cr-cookie-consent") {
+      if (e.key === "cr-cookie-consent" && e.newValue) {
         setConsent(e.newValue);
       }
     };
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
-
-  useEffect(() => {
-    if (consent !== null) return;
-    const checkConsent = setInterval(() => {
-      const current = localStorage.getItem("cr-cookie-consent");
-      if (current) {
-        setConsent(current);
-        clearInterval(checkConsent);
-      }
-    }, 500);
-    return () => clearInterval(checkConsent);
-  }, [consent]);
 
   if (consent !== "accepted") return null;
 

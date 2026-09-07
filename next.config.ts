@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
             "font-src 'self' https://fonts.gstatic.com",
             "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://embed.tawk.to",
             "frame-src https://www.googletagmanager.com https://embed.tawk.to",
+            "frame-ancestors 'none'",
             "object-src 'none'",
             "base-uri 'self'",
             "form-action 'self'",
@@ -43,6 +44,18 @@ const nextConfig: NextConfig = {
         {
           key: "Permissions-Policy",
           value: "camera=(), microphone=(), geolocation=()",
+        },
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+        {
+          key: "Cross-Origin-Opener-Policy",
+          value: "same-origin",
+        },
+        {
+          key: "Cross-Origin-Resource-Policy",
+          value: "same-origin",
         },
       ],
     },

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import ClientHome from "@/components/ClientHome";
+import { faqItems } from "@/data/faq";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://www.cosmicray.com",
+    canonical: SITE_URL,
   },
 };
 
@@ -13,9 +15,9 @@ export default function Home() {
     "@graph": [
       {
         "@type": "SolarEnergyService",
-        "@id": "https://www.cosmicray.com/#organization",
-        name: "Cosmic Ray Solar",
-        url: "https://www.cosmicray.com",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
         description:
           "Cosmic Ray Solar provides expert solar energy solutions including solar panel installation, battery storage, EV charging, heat pumps, and commercial solar systems.",
         telephone: "+1-555-123-4567",
@@ -105,14 +107,6 @@ export default function Home() {
         name: "Cosmic Ray Solar",
         url: "https://www.cosmicray.com",
         publisher: { "@id": "https://www.cosmicray.com/#org" },
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: "https://www.cosmicray.com/blog?q={search_term_string}",
-          },
-          "query-input": "required name=search_term_string",
-        },
       },
     ],
   };
@@ -120,56 +114,14 @@ export default function Home() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How much can I save with solar panels?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Most homeowners save 50-75% on electricity bills. On average, our customers save $1,800-$2,400 per year.",
-        },
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
       },
-      {
-        "@type": "Question",
-        name: "How long does installation take?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Most installations complete in 1-2 days. The full process takes 4-8 weeks including permitting.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do solar panels work on cloudy days?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Solar panels produce energy from daylight, generating 10-25% capacity on cloudy days.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What happens during a power outage?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "With battery storage, your system automatically switches to backup power during outages.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Are there tax credits available?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The federal ITC covers 30% of installation cost. Many states offer additional rebates.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What warranty do you offer?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "25-year panel warranty, 12-year inverter warranty, and 10-year workmanship warranty.",
-        },
-      },
-    ],
+    })),
   };
 
   return (

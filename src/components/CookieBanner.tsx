@@ -1,11 +1,21 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
   const bannerRef = useRef<HTMLDivElement>(null);
   const firstButtonRef = useRef<HTMLButtonElement>(null);
+
+  const handleAccept = useCallback(() => {
+    localStorage.setItem("cr-cookie-consent", "accepted");
+    setVisible(false);
+  }, []);
+
+  const handleDecline = useCallback(() => {
+    localStorage.setItem("cr-cookie-consent", "declined");
+    setVisible(false);
+  }, []);
 
   useEffect(() => {
     const consent = localStorage.getItem("cr-cookie-consent");
@@ -20,8 +30,14 @@ export default function CookieBanner() {
 
   useEffect(() => {
     if (!visible) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleDecline();
+    };
+    document.addEventListener("keydown", handleEscape);
+
     const banner = bannerRef.current;
-    if (!banner) return;
+    if (!banner) return () => document.removeEventListener("keydown", handleEscape);
 
     const focusableElements = banner.querySelectorAll<HTMLElement>(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -46,18 +62,11 @@ export default function CookieBanner() {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [visible]);
-
-  const handleAccept = () => {
-    localStorage.setItem("cr-cookie-consent", "accepted");
-    setVisible(false);
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem("cr-cookie-consent", "declined");
-    setVisible(false);
-  };
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [visible, handleDecline]);
 
   return (
     <div

@@ -1,28 +1,26 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { HEADER_HEIGHT } from "@/lib/constants";
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [transitioning, setTransitioning] = useState(false);
   const prevPathname = useRef(pathname);
 
   useEffect(() => {
     if (pathname !== prevPathname.current) {
       prevPathname.current = pathname;
-      setTransitioning(true);
       const hash = window.location.hash;
       if (!hash) {
         window.scrollTo({ top: 0, behavior: "instant" });
       }
       const timer = setTimeout(() => {
-        setTransitioning(false);
         if (hash) {
           const target = document.querySelector(hash);
           if (target) {
-            const headerH = 72;
-            const top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - HEADER_HEIGHT;
             window.scrollTo({ top, behavior: "smooth" });
             history.replaceState(null, "", pathname);
           }
@@ -32,7 +30,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
     }
   }, [pathname]);
 
-  // Handle hash on initial mount (cross-page navigation arriving with hash)
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) {
@@ -46,8 +43,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       retries++;
       const target = document.querySelector(hash);
       if (target) {
-        const headerH = 72;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - HEADER_HEIGHT;
         window.scrollTo({ top, behavior: "smooth" });
         history.replaceState(null, "", window.location.pathname);
       } else {
@@ -59,14 +55,16 @@ export default function PageTransition({ children }: { children: React.ReactNode
   }, []);
 
   return (
-    <div
-      style={{
-        opacity: transitioning ? 0 : 1,
-        transform: transitioning ? "translateY(8px)" : "translateY(0)",
-        transition: "opacity 0.25s ease, transform 0.25s ease",
-      }}
-    >
-      {children}
-    </div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }

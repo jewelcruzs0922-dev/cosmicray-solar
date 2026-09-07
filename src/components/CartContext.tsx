@@ -33,8 +33,10 @@ function readCartFromStorage(): CartItem[] {
   if (typeof window === "undefined") return [];
   try {
     const stored = localStorage.getItem("cr-cart");
-    if (stored) return JSON.parse(stored);
-  } catch {}
+    if (stored) return JSON.parse(stored) as CartItem[];
+  } catch {
+    localStorage.removeItem("cr-cart");
+  }
   return [];
 }
 

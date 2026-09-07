@@ -74,7 +74,7 @@ export default function ClientContact() {
                 </p>
               </div>
             ) : (
-              <form action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`} method="POST" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">Full Name *</label>
@@ -132,7 +132,7 @@ export default function ClientContact() {
                   <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
                 </div>
                 {status === "error" && (
-                  <p style={{ color: "var(--color-red)", fontSize: "var(--text-sm)", marginBottom: "var(--space-4)" }}>
+                  <p role="alert" style={{ color: "var(--color-red)", fontSize: "var(--text-sm)", marginBottom: "var(--space-4)" }}>
                     Something went wrong. Please call us at (555) 123-4567.
                   </p>
                 )}
