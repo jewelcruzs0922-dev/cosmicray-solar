@@ -1294,6 +1294,7 @@ input[type="checkbox"]:checked,input[type="radio"]:checked{
 .quote-estimator{padding:var(--space-32) 0;background:var(--color-surface)}
 .quote-estimator__inner{max-width:1100px;margin:0 auto;padding:0 var(--space-6)}
 .quote-estimator__header{text-align:center;margin-bottom:var(--space-12)}
+.quote-estimator__header .subheading{margin:0 auto}
 .quote-estimator__split{display:grid;grid-template-columns:1fr;gap:var(--space-8)}
 @media(min-width:768px){.quote-estimator__split{grid-template-columns:1fr 1fr}}
 .quote-estimator__inputs{background:var(--color-white);border-radius:var(--radius-2xl);padding:var(--space-8);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:var(--space-6)}
