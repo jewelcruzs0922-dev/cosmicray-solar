@@ -391,7 +391,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ── Slide ── */
 .shop__slide{min-width:340px;max-width:400px;flex-shrink:0;scroll-snap-align:start;border-radius:var(--radius-xl);overflow:hidden;transition:box-shadow 0.3s,transform 0.3s}
 .shop__slide:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
-.shop__slide-num{font-family:var(--font-display);font-size:var(--text-5xl);font-weight:800;color:var(--slide-num,var(--color-border));padding:var(--space-5) var(--space-6) 0}
+.shop__slide-num{font-family:var(--font-display);font-size:var(--text-5xl);font-weight:800;color:var(--color-border);padding:var(--space-5) var(--space-6) 0;transition:color 0.3s}
+.shop__slide:hover .shop__slide-num{color:var(--slide-accent,var(--color-primary))}
 .shop__slide-img{position:relative;aspect-ratio:16/9;overflow:hidden}
 .shop__slide-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
 .shop__slide:hover .shop__slide-img img{transform:scale(1.05)}

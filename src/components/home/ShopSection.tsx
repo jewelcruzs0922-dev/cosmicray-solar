@@ -8,11 +8,11 @@ import { useCart } from "@/components/CartContext";
 const featured = products.slice(0, 5);
 
 const colors = [
-  { bg: "#fdf8f0", accent: "#e8a838", num: "#f0d9a0" },
-  { bg: "#f0f7f4", accent: "#0a3d2f", num: "#b8d8c8" },
-  { bg: "#f0f4fa", accent: "#3b82f6", num: "#b0c8e8" },
-  { bg: "#fdf5f0", accent: "#f97316", num: "#f0c8a8" },
-  { bg: "#f5f0fa", accent: "#8b5cf6", num: "#c8b8e8" },
+  { gradient: "linear-gradient(135deg, rgba(232,168,56,0.12) 0%, rgba(232,168,56,0.03) 100%)", accent: "#e8a838", border: "rgba(232,168,56,0.2)" },
+  { gradient: "linear-gradient(135deg, rgba(10,61,47,0.10) 0%, rgba(10,61,47,0.02) 100%)", accent: "#0a3d2f", border: "rgba(10,61,47,0.15)" },
+  { gradient: "linear-gradient(135deg, rgba(59,130,246,0.10) 0%, rgba(59,130,246,0.02) 100%)", accent: "#3b82f6", border: "rgba(59,130,246,0.15)" },
+  { gradient: "linear-gradient(135deg, rgba(249,115,22,0.10) 0%, rgba(249,115,22,0.02) 100%)", accent: "#f97316", border: "rgba(249,115,22,0.15)" },
+  { gradient: "linear-gradient(135deg, rgba(139,92,246,0.10) 0%, rgba(139,92,246,0.02) 100%)", accent: "#8b5cf6", border: "rgba(139,92,246,0.15)" },
 ];
 
 export default function ShopSection() {
@@ -46,7 +46,7 @@ export default function ShopSection() {
 
         <div className="shop__carousel" ref={scrollRef}>
           {featured.map((p, i) => (
-            <div className="shop__slide" key={p.id} style={{ background: colors[i].bg, "--slide-accent": colors[i].accent, "--slide-num": colors[i].num } as React.CSSProperties}>
+            <div className="shop__slide" key={p.id} style={{ background: colors[i].gradient, border: `1px solid ${colors[i].border}`, "--slide-accent": colors[i].accent } as React.CSSProperties}>
               <div className="shop__slide-num">{String(i + 1).padStart(2, "0")}</div>
               <div className="shop__slide-img">
                 <Image src={p.img} alt={p.name} width={400} height={300} sizes="40vw" loading="lazy" />
