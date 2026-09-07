@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function ProcessSteps() {
   const steps = [
-    { img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg", alt: "Solar energy consultant reviewing home energy usage on tablet", num: "01", title: "Free Assessment", desc: "We analyze your last 12 months of energy usage, roof angle, and local sun data." },
-    { img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg", alt: "Engineer designing custom solar panel layout for residential roof", num: "02", title: "Custom Design", desc: "Your system is designed to maximize production for your specific roof and budget." },
-    { img: "https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg", alt: "Technician installing solar panels on rooftop", num: "03", title: "Expert Install", desc: "Certified technicians install in 1-2 days. Permits and paperwork handled." },
-    { img: "https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg", alt: "Homeowner monitoring solar energy production on smartphone app", num: "04", title: "Start Saving", desc: "Net metering activated. Watch your meter spin backwards from day one." },
+    { img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg", alt: "Solar energy consultant reviewing home energy usage on tablet", num: "01", title: "Free Assessment", desc: "We analyze your energy usage, roof, and sun exposure." },
+    { img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg", alt: "Engineer designing custom solar panel layout for residential roof", num: "02", title: "Custom Design", desc: "Tailored system design that maximizes production." },
+    { img: "https://images.pexels.com/photos/30285845/pexels-photo-30285845.jpeg", alt: "Technician installing solar panels on rooftop", num: "03", title: "Expert Install", desc: "Certified technicians install in 1-2 days." },
+    { img: "https://images.pexels.com/photos/12224996/pexels-photo-12224996.jpeg", alt: "Homeowner monitoring solar energy production on smartphone app", num: "04", title: "Start Saving", desc: "Net metering setup and immediate energy production." },
   ];
 
   return (
@@ -13,7 +13,7 @@ export default function ProcessSteps() {
       <div className="how-it-works__inner">
         <div className="how-it-works__header">
           <span className="label">Our Process</span>
-          <h2 className="heading-xl">From sunlight to savings in 4 steps</h2>
+          <h2 className="heading-xl">From Sunlight to Savings in 4 Steps</h2>
         </div>
         <div className="process-grid">
           {steps.map((step) => (
