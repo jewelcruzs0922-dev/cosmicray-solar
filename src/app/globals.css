@@ -1218,4 +1218,10 @@ input[type="checkbox"]:checked,input[type="radio"]:checked{
 .city-cta__actions{display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap}
 /* ERROR PAGE ACTIONS */
 .error-page__actions{display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap}
+/* ROUTE LOADING STATES */
+.route-loading{min-height:80vh;display:flex;flex-direction:column}
+.route-loading__hero{background:var(--color-primary);padding:calc(var(--header-h) + var(--space-12)) var(--space-6) var(--space-12);text-align:center}
+.route-loading__content{max-width:800px;margin:0 auto;padding:var(--space-8) var(--space-6);width:100%}
+.route-loading__content>*+*{margin-top:var(--space-4)}
+.route-loading__content--form{max-width:600px}
 @media(max-width:768px){.city-content__inner{grid-template-columns:1fr}.city-stats-card{position:static}}
