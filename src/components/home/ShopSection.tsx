@@ -138,6 +138,10 @@ export default function ShopSection() {
             ))}
           </div>
         </div>
+
+        <div className="shop__bottom">
+          <a href="/shop" className="btn btn--accent btn--large">View all products &rarr;</a>
+        </div>
       </div>
     </section>
   );

@@ -436,6 +436,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .spc__price{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-accent)}
 .spc__cart{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:transparent;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease}
 .spc__cart:hover{background:var(--color-accent);border-color:var(--color-accent);color:var(--color-dark)}
+.shop__bottom{text-align:center;margin-top:var(--space-12)}
 .product-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;transition:all var(--duration) var(--ease);display:flex;flex-direction:column;opacity:0;transform:translateY(20px);animation:productFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards}
 .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .product-card__img{position:relative;aspect-ratio:4/3;background:var(--color-surface);overflow:hidden}
