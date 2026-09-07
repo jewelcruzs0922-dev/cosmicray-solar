@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ClientHome from "@/components/ClientHome";
 import { faqItems } from "@/data/faq";
-import { SITE_URL, SITE_NAME } from "@/lib/constants";
+import { SITE_URL, SITE_NAME, PHONE, EMAIL, ADDRESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   alternates: {
@@ -20,18 +20,18 @@ export default function Home() {
         url: SITE_URL,
         description:
           "Cosmic Ray Solar provides expert solar energy solutions including solar panel installation, battery storage, EV charging, heat pumps, and commercial solar systems.",
-        telephone: "+1-555-123-4567",
-        email: "info@cosmicray.com",
+        telephone: PHONE,
+        email: EMAIL,
         logo: {
           "@type": "ImageObject",
-          url: "https://www.cosmicray.com/logo.png",
+          url: `${SITE_URL}/logo.png`,
         },
         address: {
           "@type": "PostalAddress",
-          streetAddress: "123 Solar Avenue",
-          addressLocality: "Sunshine City",
-          addressRegion: "CA",
-          postalCode: "90210",
+          streetAddress: ADDRESS.street,
+          addressLocality: ADDRESS.city,
+          addressRegion: ADDRESS.state,
+          postalCode: ADDRESS.zip,
           addressCountry: "US",
         },
         areaServed: [

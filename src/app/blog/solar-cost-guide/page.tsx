@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BlogPostLayout, { generateBlogMetadata } from "@/components/BlogPostLayout";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = generateBlogMetadata({
   slug: "solar-cost-guide",
@@ -140,10 +141,10 @@ export default function SolarCostGuidePage() {
             datePublished: "2025-01-15",
             dateModified: "2026-08-01",
             author: { "@type": "Organization", name: "Cosmic Ray Solar" },
-            publisher: { "@type": "Organization", name: "Cosmic Ray Solar", url: "https://www.cosmicray.com", logo: { "@type": "ImageObject", url: "https://www.cosmicray.com/logo.png" } },
+            publisher: { "@type": "Organization", name: "Cosmic Ray Solar", url: `${SITE_URL}`, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` } },
             wordCount: 1800,
             image: "https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
-            mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.cosmicray.com/blog/solar-cost-guide" },
+            mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/solar-cost-guide` },
           }),
         }}
       />

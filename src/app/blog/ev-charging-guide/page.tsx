@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BlogPostLayout, { generateBlogMetadata } from "@/components/BlogPostLayout";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = generateBlogMetadata({
   slug: "ev-charging-guide",
@@ -460,10 +461,10 @@ export default function EVChargingGuidePage() {
             publisher: {
               "@type": "Organization",
               name: "Cosmic Ray Solar",
-              url: "https://www.cosmicray.com",
+              url: `${SITE_URL}`,
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.cosmicray.com/logo.png",
+                url: `${SITE_URL}/logo.png`,
               },
             },
             wordCount: 2000,
@@ -471,7 +472,7 @@ export default function EVChargingGuidePage() {
               "https://images.pexels.com/photos/27355836/pexels-photo-27355836.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.cosmicray.com/blog/ev-charging-guide",
+              "@id": `${SITE_URL}/blog/ev-charging-guide`,
             },
           }),
         }}

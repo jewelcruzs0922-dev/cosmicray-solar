@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL, PHONE, PHONE_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -9,10 +10,10 @@ export const metadata: Metadata = {
     description:
       "How we collect, use, and protect your personal information.",
     type: "website",
-    url: "https://www.cosmicray.com/privacy",
+    url: `${SITE_URL}/privacy`,
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Privacy Policy",
@@ -24,11 +25,11 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Cosmic Ray Solar",
     description:
       "How we collect, use, and protect your personal information.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   robots: { index: true, follow: true },
   alternates: {
-    canonical: "https://www.cosmicray.com/privacy",
+    canonical: `${SITE_URL}/privacy`,
   },
 };
 
@@ -162,7 +163,7 @@ export default function PrivacyPage() {
         <p>
           To exercise any of these rights, contact us at{" "}
           <a href="mailto:privacy@cosmicray.com">privacy@cosmicray.com</a> or
-          call <a href="tel:+15551234567">(555) 123-4567</a>.
+          call <a href={`tel:${PHONE_LINK}`}>{PHONE}</a>.
         </p>
 
         <h2>7. California Residents (CCPA/CPRA)</h2>
@@ -210,7 +211,7 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Phone:</strong>{" "}
-            <a href="tel:+15551234567">(555) 123-4567</a>
+            <a href={`tel:${PHONE_LINK}`}>{PHONE}</a>
           </li>
           <li>
             <strong>Address:</strong> 123 Solar Avenue, Sunshine City, CA 90210

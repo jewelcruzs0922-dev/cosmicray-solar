@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ClientContact from "@/components/ClientContact";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
     description:
       "Get in touch with Cosmic Ray Solar. Request a free solar quote, ask questions, or schedule a home assessment.",
     type: "website",
-    url: "https://www.cosmicray.com/contact",
+    url: `${SITE_URL}/contact`,
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Contact Us",
@@ -25,10 +26,10 @@ export const metadata: Metadata = {
     title: "Contact Us | Cosmic Ray Solar",
     description:
       "Get in touch with Cosmic Ray Solar. Request a free solar quote, ask questions, or schedule a home assessment.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/contact",
+    canonical: `${SITE_URL}/contact`,
   },
 };
 

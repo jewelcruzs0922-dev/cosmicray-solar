@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
     description:
       "Expert advice on solar energy, battery storage, EV charging, and reducing your electricity bills.",
     type: "website",
-    url: "https://www.cosmicray.com/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "Cosmic Ray Solar",
     locale: "en_US",
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Blog",
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
     title: "Blog | Cosmic Ray Solar",
     description:
       "Expert advice on solar energy, battery storage, EV charging, and reducing your electricity bills.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/blog",
+    canonical: `${SITE_URL}/blog`,
   },
 };
 

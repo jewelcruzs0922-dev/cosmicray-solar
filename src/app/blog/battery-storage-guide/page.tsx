@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BlogPostLayout, { generateBlogMetadata } from "@/components/BlogPostLayout";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = generateBlogMetadata({
   slug: "battery-storage-guide",
@@ -104,10 +105,10 @@ export default function BatteryStorageGuidePage() {
             datePublished: "2025-01-22",
             dateModified: "2026-08-01",
             author: { "@type": "Organization", name: "Cosmic Ray Solar" },
-            publisher: { "@type": "Organization", name: "Cosmic Ray Solar", url: "https://www.cosmicray.com", logo: { "@type": "ImageObject", url: "https://www.cosmicray.com/logo.png" } },
+            publisher: { "@type": "Organization", name: "Cosmic Ray Solar", url: `${SITE_URL}`, logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` } },
             wordCount: 1500,
             image: "https://images.pexels.com/photos/9800025/pexels-photo-9800025.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
-            mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.cosmicray.com/blog/battery-storage-guide" },
+            mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/battery-storage-guide` },
           }),
         }}
       />

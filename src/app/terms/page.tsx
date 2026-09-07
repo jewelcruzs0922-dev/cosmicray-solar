@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL, PHONE, PHONE_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -9,10 +10,10 @@ export const metadata: Metadata = {
     description:
       "The terms governing your use of our website, products, and solar installation services.",
     type: "website",
-    url: "https://www.cosmicray.com/terms",
+    url: `${SITE_URL}/terms`,
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Terms of Service",
@@ -24,11 +25,11 @@ export const metadata: Metadata = {
     title: "Terms of Service | Cosmic Ray Solar",
     description:
       "The terms governing your use of our website, products, and solar installation services.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   robots: { index: true, follow: true },
   alternates: {
-    canonical: "https://www.cosmicray.com/terms",
+    canonical: `${SITE_URL}/terms`,
   },
 };
 
@@ -186,7 +187,7 @@ export default function TermsPage() {
           </li>
           <li>
             <strong>Phone:</strong>{" "}
-            <a href="tel:+15551234567">(555) 123-4567</a>
+            <a href={`tel:${PHONE_LINK}`}>{PHONE}</a>
           </li>
           <li>
             <strong>Address:</strong> 123 Solar Avenue, Sunshine City, CA 90210

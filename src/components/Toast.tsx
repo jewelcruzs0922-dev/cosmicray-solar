@@ -51,7 +51,3 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     </ToastContext.Provider>
   );
 }
-
-export default function Toast() {
-  return null;
-}

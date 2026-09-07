@@ -1,5 +1,3 @@
-"use client";
-
 import { reviews } from "@/data/reviews";
 
 const highlightedWords = ["flawless", "banking credits", "professional", "paid for itself", "$240/month", "real deal", "one day", "$0 down", "exactly as projected", "best price"];

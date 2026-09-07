@@ -4,6 +4,7 @@ import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
+import { SITE_URL, SITE_NAME, PHONE, PHONE_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
     description:
       "From a single garage installation to a nationwide movement — discover the people behind Cosmic Ray.",
     type: "website",
-    url: "https://www.cosmicray.com/about",
+    url: `${SITE_URL}/about`,
     siteName: "Cosmic Ray Solar",
     locale: "en_US",
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — About Us",
@@ -31,19 +32,19 @@ export const metadata: Metadata = {
     title: "About Us | Cosmic Ray Solar",
     description:
       "From a single garage installation to a nationwide movement — discover the people behind Cosmic Ray.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/about",
+    canonical: `${SITE_URL}/about`,
   },
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Cosmic Ray Solar",
-  url: "https://www.cosmicray.com",
-  logo: "https://www.cosmicray.com/logo.png",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
   description:
     "Cosmic Ray Solar is a nationwide solar energy company powering 2,400+ homes across 15 states with clean, renewable energy.",
   foundingDate: "2012",
@@ -61,7 +62,7 @@ const organizationJsonLd = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-555-123-4567",
+    telephone: PHONE,
     contactType: "customer service",
   },
   sameAs: [
@@ -543,10 +544,10 @@ export default function AboutPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+15551234567"
+              href={PHONE_LINK}
               className="btn btn--outline btn--large"
             >
-              Call (555) 123-4567
+              Call {PHONE}
             </a>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BlogPostLayout, { generateBlogMetadata } from "@/components/BlogPostLayout";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = generateBlogMetadata({
   slug: "solar-tax-credits",
@@ -345,10 +346,10 @@ export default function SolarTaxCreditsPage() {
             publisher: {
               "@type": "Organization",
               name: "Cosmic Ray Solar",
-              url: "https://www.cosmicray.com",
+              url: `${SITE_URL}`,
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.cosmicray.com/logo.png",
+                url: `${SITE_URL}/logo.png`,
               },
             },
             wordCount: 2200,
@@ -356,7 +357,7 @@ export default function SolarTaxCreditsPage() {
               "https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.cosmicray.com/blog/solar-tax-credits",
+              "@id": `${SITE_URL}/blog/solar-tax-credits`,
             },
           }),
         }}

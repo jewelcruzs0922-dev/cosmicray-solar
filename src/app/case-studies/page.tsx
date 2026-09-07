@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
     description:
       "Real solar installation case studies with actual savings data and customer stories.",
     type: "website",
-    url: "https://www.cosmicray.com/case-studies",
+    url: `${SITE_URL}/case-studies`,
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Case Studies",
@@ -26,10 +27,10 @@ export const metadata: Metadata = {
     title: "Case Studies | Cosmic Ray Solar",
     description:
       "Real results from real homeowners. See how Cosmic Ray Solar transformed homes across 15 states.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/case-studies",
+    canonical: `${SITE_URL}/case-studies`,
   },
 };
 
@@ -39,7 +40,7 @@ const caseStudiesJsonLd = {
   name: "Cosmic Ray Solar Case Studies",
   description:
     "Real results from real homeowners. See how Cosmic Ray Solar transformed homes across 15 states.",
-  url: "https://www.cosmicray.com/case-studies",
+  url: `${SITE_URL}/case-studies`,
   numberOfItems: 3,
   itemListElement: [
     {

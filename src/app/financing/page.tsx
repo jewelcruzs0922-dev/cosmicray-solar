@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ScrollReveal from "@/components/ScrollReveal";
+import { SITE_URL, PHONE, PHONE_LINK } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Financing Options",
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
     description:
       "Solar financing options from Cosmic Ray Solar. $0 down, low monthly payments, leases, and PPAs. Make solar affordable.",
     type: "website",
-    url: "https://www.cosmicray.com/financing",
+    url: `${SITE_URL}/financing`,
     siteName: "Cosmic Ray Solar",
     locale: "en_US",
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Financing Options",
@@ -29,10 +30,10 @@ export const metadata: Metadata = {
     title: "Financing Options | Cosmic Ray Solar",
     description:
       "Solar financing options from Cosmic Ray Solar. $0 down, low monthly payments, leases, and PPAs. Make solar affordable.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/financing",
+    canonical: `${SITE_URL}/financing`,
   },
 };
 
@@ -253,10 +254,10 @@ export default function FinancingPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+15551234567"
+              href={`tel:${PHONE_LINK}`}
               className="btn btn--outline-light btn--large"
             >
-              Call (555) 123-4567
+              Call {PHONE}
             </a>
           </div>
         </div>

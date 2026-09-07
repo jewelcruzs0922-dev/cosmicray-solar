@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Service Areas",
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
     description:
       "Solar installation services across 15 states. Find your city.",
     type: "website",
-    url: "https://www.cosmicray.com/service-areas",
+    url: `${SITE_URL}/service-areas`,
     images: [
       {
-        url: "https://www.cosmicray.com/opengraph-image",
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Cosmic Ray Solar — Service Areas",
@@ -25,10 +26,10 @@ export const metadata: Metadata = {
     title: "Service Areas | Cosmic Ray Solar",
     description:
       "Cosmic Ray Solar serves 15 states across the USA. Find solar installation services near you.",
-    images: ["https://www.cosmicray.com/opengraph-image"],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   alternates: {
-    canonical: "https://www.cosmicray.com/service-areas",
+    canonical: `${SITE_URL}/service-areas`,
   },
 };
 
@@ -38,7 +39,7 @@ const serviceAreasJsonLd = {
   name: "Cosmic Ray Solar Service Areas",
   description:
     "Professional solar installation services across 15 states in the USA.",
-  url: "https://www.cosmicray.com/service-areas",
+  url: `${SITE_URL}/service-areas`,
   numberOfItems: 15,
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "California" },
