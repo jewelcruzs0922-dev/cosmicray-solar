@@ -23,6 +23,16 @@ export default function Header() {
     setCartOpen(false);
   }, []);
 
+  const scrollToSection = useCallback((id: string) => {
+    closeAll();
+    const el = document.getElementById(id);
+    if (el) {
+      const headerH = 80;
+      const y = el.getBoundingClientRect().top + window.scrollY - headerH;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [closeAll]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeAll();
@@ -83,10 +93,10 @@ export default function Header() {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                     <span>Service Areas<br />We serve 15 states</span>
                   </Link>
-                  <Link href="/#faq" role="menuitem">
+                  <button type="button" role="menuitem" onClick={() => scrollToSection("faq")}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
                     <span>FAQ<br />Common questions answered</span>
-                  </Link>
+                  </button>
                 </div>
               </li>
               <li><Link href="/blog">Blog</Link></li>
