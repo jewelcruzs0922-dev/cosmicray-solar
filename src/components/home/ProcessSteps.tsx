@@ -10,6 +10,10 @@ export default function ProcessSteps() {
 
   return (
     <section className="how-it-works" id="how-it-works">
+      <div className="hiw__deco hiw__deco--1" aria-hidden="true" />
+      <div className="hiw__deco hiw__deco--2" aria-hidden="true" />
+      <div className="hiw__deco hiw__deco--3" aria-hidden="true" />
+      <div className="hiw__grid-bg" aria-hidden="true" />
       <div className="how-it-works__inner">
         <div className="how-it-works__header">
           <span className="label">Our Process</span>
