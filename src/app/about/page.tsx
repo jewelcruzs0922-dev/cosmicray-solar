@@ -521,8 +521,8 @@ export default function AboutPage() {
             <span className="about-stats__label">States Served</span>
           </div>
           <div className="about-stats__item" data-reveal data-reveal-delay="4">
-            <span className="about-stats__num" data-count="98">
-              98
+            <span className="about-stats__num" data-count="99">
+              99
             </span>
             <span className="about-stats__plus">%</span>
             <span className="about-stats__label">Satisfaction Rate</span>
@@ -543,7 +543,7 @@ export default function AboutPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+1555123456"
+              href="tel:+15551234567"
               className="btn btn--outline btn--large"
             >
               Call (555) 123-4567

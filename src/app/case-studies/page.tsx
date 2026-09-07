@@ -45,23 +45,23 @@ const caseStudiesJsonLd = {
     {
       "@type": "ListItem",
       position: 1,
-      name: "The Martinez Family — Phoenix, AZ",
+      name: "The Johnson Family — Austin, TX",
       description:
-        "Eliminated $4,200/year in electricity costs with a 10kW system.",
+        "Cut electricity bill from $310/mo to $18/mo with a 10.5kW system.",
     },
     {
       "@type": "ListItem",
       position: 2,
-      name: "Sunrise Coffee Roasters — Denver, CO",
+      name: "The Martinez Family — Phoenix, AZ",
       description:
-        "Cut operating costs by 60% with a 50kW commercial system.",
+        "Eliminated $4,200/year in electricity costs with a 10kW system and Powerwalls.",
     },
     {
       "@type": "ListItem",
       position: 3,
-      name: "Oakwood Community Center — Austin, TX",
+      name: "Sunrise Coffee Roasters — Denver, CO",
       description:
-        "Powers entire facility with 100% solar energy, saving $18,000 annually.",
+        "Cut operating costs by 60% with a 50kW commercial system.",
     },
   ],
 };

@@ -19,7 +19,7 @@ export default function ProcessSteps() {
           {steps.map((step) => (
             <div className="process-step" key={step.num}>
               <div className="process-step__img">
-                <Image src={step.img} alt={step.alt} width="400" height="300" sizes="(max-width: 1024px) 100vw, 400px" loading="lazy" />
+                <Image src={step.img} alt={step.alt} width={400} height={300} sizes="(max-width: 1024px) 100vw, 400px" loading="lazy" />
               </div>
               <div className="process-step__number">{step.num}</div>
               <h3 className="heading-md">{step.title}</h3>

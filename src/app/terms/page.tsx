@@ -186,7 +186,7 @@ export default function TermsPage() {
           </li>
           <li>
             <strong>Phone:</strong>{" "}
-            <a href="tel:+1555123456">(555) 123-4567</a>
+            <a href="tel:+15551234567">(555) 123-4567</a>
           </li>
           <li>
             <strong>Address:</strong> 123 Solar Avenue, Sunshine City, CA 90210

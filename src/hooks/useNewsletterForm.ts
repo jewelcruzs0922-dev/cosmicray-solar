@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { newsletterSchema } from "@/lib/validations";
 import { FORMSPREE_NEWSLETTER_ID } from "@/lib/constants";
 
 type NewsletterStatus = "idle" | "sending" | "sent" | "error";
@@ -12,6 +13,15 @@ export function useNewsletterForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
+    const email = data.get("email") as string;
+
+    const result = newsletterSchema.safeParse({ email });
+    if (!result.success) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+      return;
+    }
+
     data.append("_subject", "New Newsletter Subscriber");
     setStatus("sending");
 

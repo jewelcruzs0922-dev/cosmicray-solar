@@ -41,9 +41,22 @@ export function generateBlogMetadata(post: { slug: string; title: string; descri
   };
 }
 
-export default function BlogPostLayout({ title, tag, date, dateDisplay, readTime, children }: BlogPostLayoutProps) {
+export default function BlogPostLayout({ slug, title, description, tag, date, dateDisplay, readTime, publishedTime, modifiedTime, children }: BlogPostLayoutProps) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    datePublished: publishedTime,
+    dateModified: modifiedTime,
+    author: { "@type": "Organization", name: "Cosmic Ray Solar", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "Cosmic Ray Solar", url: SITE_URL },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: title }]} />
 
       <section className="post-hero">

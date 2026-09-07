@@ -12,15 +12,15 @@ const SolutionsGrid = dynamic(() => import("@/components/home/SolutionsGrid"), {
 const StatsSection = dynamic(() => import("@/components/home/StatsSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "200px", margin: "0 var(--space-6)" }} /> });
 const ShopSection = dynamic(() => import("@/components/home/ShopSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "500px", margin: "0 var(--space-6)" }} /> });
 const ProcessSteps = dynamic(() => import("@/components/home/ProcessSteps"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "300px", margin: "0 var(--space-6)" }} /> });
-const ResultsSection = dynamic(() => import("@/components/home/ResultsSection"));
-const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"));
-const FinancingSection = dynamic(() => import("@/components/home/FinancingSection"));
-const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"));
-const FaqSection = dynamic(() => import("@/components/home/FaqSection"));
-const SavingsCalculator = dynamic(() => import("@/components/home/SavingsCalculator"));
-const ContactFormSection = dynamic(() => import("@/components/home/ContactFormSection"));
-const NewsletterSection = dynamic(() => import("@/components/home/NewsletterSection"));
-const CtaSection = dynamic(() => import("@/components/home/CtaSection"));
+const ResultsSection = dynamic(() => import("@/components/home/ResultsSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
+const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "300px", margin: "0 var(--space-6)" }} /> });
+const FinancingSection = dynamic(() => import("@/components/home/FinancingSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
+const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "300px", margin: "0 var(--space-6)" }} /> });
+const FaqSection = dynamic(() => import("@/components/home/FaqSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
+const SavingsCalculator = dynamic(() => import("@/components/home/SavingsCalculator"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "300px", margin: "0 var(--space-6)" }} /> });
+const ContactFormSection = dynamic(() => import("@/components/home/ContactFormSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "500px", margin: "0 var(--space-6)" }} /> });
+const NewsletterSection = dynamic(() => import("@/components/home/NewsletterSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "200px", margin: "0 var(--space-6)" }} /> });
+const CtaSection = dynamic(() => import("@/components/home/CtaSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "200px", margin: "0 var(--space-6)" }} /> });
 
 export default function ClientHome() {
   useEffect(() => {

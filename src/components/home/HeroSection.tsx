@@ -21,6 +21,7 @@ export default function HeroSection() {
   const [heroSlide, setHeroSlide] = useState(0);
   const [userInteracted, setUserInteracted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedRef = useRef(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -30,8 +31,15 @@ export default function HeroSection() {
   const meshY = useTransform(scrollYProgress, [0, 1], [0, 25]);
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    prefersReducedRef.current = mq.matches;
+    const handler = (e: MediaQueryListEvent) => { prefersReducedRef.current = e.matches; };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedRef.current) return;
     timerRef.current = setInterval(() => {
       if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length);
     }, 4000);
@@ -118,6 +126,7 @@ export default function HeroSection() {
           <div className="hero__carousel" id="hero-carousel" role="region" aria-label="Featured solar installations" aria-roledescription="carousel"
             onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
             onMouseLeave={() => {
+              if (isPaused) return;
               const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
               if (prefersReduced) return;
               timerRef.current = setInterval(() => { if (!document.hidden) setHeroSlide((s) => (s + 1) % slides.length); }, 4000);

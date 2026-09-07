@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { PHONE, PHONE_LINK, EMAIL } from "@/lib/constants";
+import { PHONE, PHONE_LINK, EMAIL, HEADER_HEIGHT } from "@/lib/constants";
 
 interface MobileNavProps {
   open: boolean;
@@ -20,7 +20,7 @@ export default function MobileNav({ open, onClose, onOpenSearch }: MobileNavProp
     onClose();
     const target = document.querySelector("#contact-form");
     if (target) {
-      const headerH = 72;
+      const headerH = HEADER_HEIGHT;
       const top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
       window.scrollTo({ top, behavior: "smooth" });
       history.replaceState(null, "", "/#contact-form");

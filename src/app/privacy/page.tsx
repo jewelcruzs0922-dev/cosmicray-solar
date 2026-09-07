@@ -162,7 +162,7 @@ export default function PrivacyPage() {
         <p>
           To exercise any of these rights, contact us at{" "}
           <a href="mailto:privacy@cosmicray.com">privacy@cosmicray.com</a> or
-          call <a href="tel:+1555123456">(555) 123-4567</a>.
+          call <a href="tel:+15551234567">(555) 123-4567</a>.
         </p>
 
         <h2>7. California Residents (CCPA/CPRA)</h2>
@@ -210,7 +210,7 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Phone:</strong>{" "}
-            <a href="tel:+1555123456">(555) 123-4567</a>
+            <a href="tel:+15551234567">(555) 123-4567</a>
           </li>
           <li>
             <strong>Address:</strong> 123 Solar Avenue, Sunshine City, CA 90210

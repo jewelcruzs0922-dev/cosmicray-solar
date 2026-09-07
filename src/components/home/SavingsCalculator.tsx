@@ -5,7 +5,8 @@ import { useState } from "react";
 export default function SavingsCalculator() {
   const [bill, setBill] = useState(250);
   const yearlyBill = bill * 12;
-  const yearlySavings = Math.round(yearlyBill * 0.75);
+  const savingsRate = bill < 150 ? 0.65 : bill < 300 ? 0.70 : 0.75;
+  const yearlySavings = Math.round(yearlyBill * savingsRate);
   const systemSizeKw = Math.min(15, Math.max(4, Math.round((yearlyBill / (365 * 5 * 1.3 * 0.22)) * 10) / 10));
   const paybackYears = Math.round((systemSizeKw * 1000 * 2.10 / yearlySavings) * 10) / 10;
   const twentyFiveYrSavings = yearlySavings * 25;

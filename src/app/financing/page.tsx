@@ -253,9 +253,8 @@ export default function FinancingPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+1555123456"
-              className="btn btn--outline btn--large"
-              style={{ color: "white", borderColor: "rgba(255,255,255,0.4)" }}
+              href="tel:+15551234567"
+              className="btn btn--outline-light btn--large"
             >
               Call (555) 123-4567
             </a>

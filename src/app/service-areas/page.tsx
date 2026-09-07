@@ -454,6 +454,32 @@ export default function ServiceAreasPage() {
                 <span className="sa-city-link">Naperville</span>
               </div>
             </div>
+
+            {/* New York */}
+            <div className="sa-state">
+              <div className="sa-state__name">
+                <div className="sa-state__icon">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                New York
+              </div>
+              <div className="sa-state__count">50+ homes powered</div>
+              <div className="sa-state__cities">
+                <span className="sa-city-link">New York City</span>
+                <span className="sa-city-link">Buffalo</span>
+                <span className="sa-city-link">Albany</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
