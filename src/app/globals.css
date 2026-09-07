@@ -381,7 +381,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .shop__header .subheading{margin:0 auto}
 .shop__filters{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2);margin-bottom:var(--space-10);padding:0 var(--space-4)}
 .shop__filter{padding:var(--space-2) var(--space-4);font-family:var(--font-display);font-size:var(--text-sm);font-weight:500;border:1px solid var(--color-border);border-radius:var(--radius-full);background:var(--color-white);transition:all var(--duration) var(--ease);min-height:40px;white-space:nowrap}
-.shop__filter:hover,.shop__filter.active{background:var(--color-primary);color:white;border-color:var(--color-primary)}
+.shop__filter:hover,.shop__filter--active{background:var(--color-primary);color:white;border-color:var(--color-primary)}
 .shop__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:var(--space-6)}
 /* ── Product Card Animation ── */
 @keyframes productFadeIn{to{opacity:1;transform:translateY(0)}}

@@ -14,6 +14,7 @@ const ResultsSection = dynamic(() => import("@/components/home/ResultsSection"),
 const ReviewsSection = dynamic(() => import("@/components/home/ReviewsSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
 const QuoteEstimator = dynamic(() => import("@/components/home/QuoteEstimator"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
 const FaqSection = dynamic(() => import("@/components/home/FaqSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
+const ShopSection = dynamic(() => import("@/components/home/ShopSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
 const CtaSection = dynamic(() => import("@/components/home/CtaSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "200px", margin: "0 var(--space-6)" }} /> });
 
 export default function ClientHome() {
@@ -59,6 +60,7 @@ export default function ClientHome() {
       <SectionErrorBoundary name="Reviews"><AnimatedSection><ReviewsSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="QuoteEstimator"><AnimatedSection><QuoteEstimator /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="FAQ"><AnimatedSection><FaqSection /></AnimatedSection></SectionErrorBoundary>
+      <SectionErrorBoundary name="Shop"><AnimatedSection><ShopSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="CTA"><AnimatedSection><CtaSection /></AnimatedSection></SectionErrorBoundary>
     </>
   );
