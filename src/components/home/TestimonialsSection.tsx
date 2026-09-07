@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
           <span className="label">What Our Customers Say</span>
           <h2 className="heading-xl">Trusted by 2,400+ Homeowners</h2>
         </div>
-        <div className="testimonials__grid">
+          <div className="testimonial-grid">
           {testimonials.map((t, i) => (
             <div className="testimonial-card" key={i}>
               <div className="testimonial-card__stars" aria-label={`${t.rating} out of 5 stars`}>

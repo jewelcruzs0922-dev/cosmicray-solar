@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { searchablePages } from "@/data/searchablePages";
@@ -14,6 +14,7 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open) {
@@ -22,6 +23,27 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     }
   }, [open]);
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") { onClose(); return; }
+    if (e.key !== "Tab" || !overlayRef.current) return;
+    const focusable = overlayRef.current.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!open) return;
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, handleKeyDown]);
+
   const results = query.length >= 2
     ? searchablePages.filter(
         (p) => p.title.toLowerCase().includes(query.toLowerCase()) || p.desc.toLowerCase().includes(query.toLowerCase())
@@ -29,7 +51,7 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     : [];
 
   return (
-    <div className="search-overlay" aria-hidden={!open} role="dialog" aria-label="Search" aria-modal="true">
+    <div className="search-overlay" aria-hidden={!open} role="dialog" aria-label="Search" aria-modal="true" ref={overlayRef}>
       <div className="search-overlay__inner">
         <button className="search-overlay__close" type="button" aria-label="Close search" onClick={onClose}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

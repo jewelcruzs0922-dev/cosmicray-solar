@@ -50,28 +50,3 @@ export default function AnimatedSection({ children, className, delay = 0 }: Anim
     </motion.div>
   );
 }
-
-export function AnimatedGroup({ children, className, stagger = 0.1 }: { children: ReactNode; className?: string; stagger?: number }) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-8%" }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: stagger } },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export function AnimatedItem({ children, className, variant = "fadeUp" }: { children: ReactNode; className?: string; variant?: keyof typeof animations }) {
-  return (
-    <motion.div className={className} variants={animations[variant]}>
-      {children}
-    </motion.div>
-  );
-}

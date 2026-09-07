@@ -22,7 +22,7 @@ export default function SavingsCalculator() {
           <div className="calculator__input-group">
             <label htmlFor="bill-slider">Monthly Electricity Bill: <strong>${bill}</strong></label>
             <input type="range" id="bill-slider" min="50" max="800" step="10" value={bill} onChange={(e) => setBill(Number(e.target.value))} className="calculator__slider" />
-            <div className="calculator__range-labels"><span>$50</span><span>$800</span></div>
+            <div className="calculator__slider-labels"><span>$50</span><span>$800</span></div>
           </div>
           <div className="calculator__results">
             <div className="calculator__result"><span className="calculator__result-value">${yearlySavings.toLocaleString()}</span><span className="calculator__result-label">Yearly Savings</span></div>

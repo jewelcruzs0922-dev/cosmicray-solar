@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PHONE, PHONE_LINK, EMAIL } from "@/lib/constants";
@@ -12,6 +13,7 @@ interface MobileNavProps {
 
 export default function MobileNav({ open, onClose, onOpenSearch }: MobileNavProps) {
   const router = useRouter();
+  const navRef = useRef<HTMLDivElement>(null);
 
   const handleQuoteClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -27,8 +29,37 @@ export default function MobileNav({ open, onClose, onOpenSearch }: MobileNavProp
     }
   };
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") { onClose(); return; }
+    if (e.key !== "Tab" || !navRef.current) return;
+    const focusable = navRef.current.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!open) return;
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, handleKeyDown]);
+
   return (
-    <div className="mobile-nav" aria-hidden={!open} aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div
+      ref={navRef}
+      className="mobile-nav"
+      aria-hidden={!open}
+      aria-label="Mobile navigation"
+      role="dialog"
+      aria-modal="true"
+      {...(!open ? { inert: true } : {})}
+    >
       <form className="mobile-nav__search" onSubmit={(e) => { e.preventDefault(); onOpenSearch(); onClose(); }}>
         <input className="mobile-nav__search-input" type="search" name="search" placeholder="Search..." aria-label="Search" />
         <button type="submit" aria-label="Submit search">
