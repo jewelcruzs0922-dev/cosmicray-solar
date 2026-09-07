@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { blogPosts } from "@/data/blogPosts";
+import { useNewsletterForm } from "@/hooks/useNewsletterForm";
 
 const filters = [
   { key: null, label: "All Posts" },
@@ -15,53 +16,17 @@ const filters = [
 
 export default function BlogListing() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const { status: newsletterStatus, handleSubmit: handleNewsletterSubmit } = useNewsletterForm();
 
   const filteredPosts = activeFilter === null ? blogPosts : blogPosts.filter((p) => p.category === activeFilter);
-
-  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
-    if (!emailInput?.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-      emailInput.classList.add("error");
-      emailInput.focus();
-      return;
-    }
-    emailInput.classList.remove("error");
-    setNewsletterStatus("sending");
-    const formData = new FormData(form);
-    formData.append("_subject", "New Newsletter Subscriber");
-    try {
-      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ID}`, {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        setNewsletterStatus("sent");
-        form.reset();
-        setTimeout(() => setNewsletterStatus("idle"), 3000);
-      } else {
-        throw new Error("Failed");
-      }
-    } catch {
-      setNewsletterStatus("error");
-      setTimeout(() => setNewsletterStatus("idle"), 3000);
-    }
-  };
 
   return (
     <>
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="breadcrumbs__inner">
           <ol className="breadcrumbs__list">
-            <li className="breadcrumbs__item">
-              <Link href="/">Home</Link>
-            </li>
-            <li className="breadcrumbs__item" aria-current="page">
-              Blog
-            </li>
+            <li className="breadcrumbs__item"><Link href="/">Home</Link></li>
+            <li className="breadcrumbs__item" aria-current="page">Blog</li>
           </ol>
         </div>
       </nav>
@@ -77,11 +42,7 @@ export default function BlogListing() {
         <div className="blog-section__inner">
           <div className="blog-filters">
             {filters.map((f) => (
-              <button
-                key={f.label}
-                className={`blog-filter${activeFilter === f.key ? " active" : ""}`}
-                onClick={() => setActiveFilter(activeFilter === f.key ? null : f.key)}
-              >
+              <button key={f.label} className={`blog-filter${activeFilter === f.key ? " active" : ""}`} onClick={() => setActiveFilter(activeFilter === f.key ? null : f.key)}>
                 {f.label}
               </button>
             ))}
@@ -100,16 +61,11 @@ export default function BlogListing() {
                     <span className="blog-card__tag">{post.tag}</span>
                     <time dateTime={post.date}>{post.dateDisplay}</time>
                   </div>
-                  <h2 className="blog-card__title">
-                    <Link href={post.slug}>{post.title}</Link>
-                  </h2>
+                  <h2 className="blog-card__title"><Link href={post.slug}>{post.title}</Link></h2>
                   <p className="blog-card__excerpt">{post.excerpt}</p>
                   <Link href={post.slug} className="blog-card__read">
                     Read More{" "}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                   </Link>
                 </div>
               </article>
@@ -123,11 +79,11 @@ export default function BlogListing() {
           <h2 className="heading-xl">Stay Informed</h2>
           <p className="subheading">Get the latest solar tips, guides, and news delivered to your inbox.</p>
           {newsletterStatus === "sent" ? (
-            <p style={{ color: "var(--color-primary)", fontWeight: 600 }}>Thanks for subscribing!</p>
+            <p className="newsletter__success">Thanks for subscribing!</p>
           ) : (
             <form className="newsletter__form" onSubmit={handleNewsletterSubmit}>
               <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
-              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="form-honeypot" aria-hidden="true" />
               <button type="submit" className="btn btn--primary" disabled={newsletterStatus === "sending"}>
                 {newsletterStatus === "sending" ? "Subscribing..." : "Subscribe"}
               </button>

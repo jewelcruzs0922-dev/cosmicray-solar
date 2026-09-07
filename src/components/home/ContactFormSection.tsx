@@ -1,79 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { useToast } from "@/components/Toast";
-import { FORMSPREE_CONTACT_ID } from "@/lib/constants";
-import { contactFormSchema, type ContactFormData } from "@/lib/validations";
-
-type FormErrors = Partial<Record<keyof ContactFormData, string>>;
+import { useContactForm } from "@/hooks/useContactForm";
 
 export default function ContactFormSection() {
-  const { showToast } = useToast();
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [errors, setErrors] = useState<FormErrors>({});
-
-  const validateField = (name: string, value: string) => {
-    const result = contactFormSchema.shape[name as keyof ContactFormData]?.safeParse(value);
-    if (result && !result.success) {
-      setErrors((prev) => ({ ...prev, [name]: result.error.issues[0]?.message }));
-    } else {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[name as keyof ContactFormData];
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    const result = contactFormSchema.safeParse({
-      name: data.get("name"),
-      email: data.get("email"),
-      phone: data.get("phone"),
-      subject: data.get("subject") || undefined,
-      message: data.get("message"),
-    });
-
-    if (!result.success) {
-      const fieldErrors: FormErrors = {};
-      result.error.issues.forEach((issue) => {
-        const field = issue.path[0] as keyof ContactFormData;
-        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setErrors({});
-    setStatus("sending");
-
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_CONTACT_ID}`, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        setStatus("sent");
-        form.reset();
-        showToast("Thank you! We'll contact you within 24 hours.");
-        if (typeof window !== "undefined" && typeof window.gtag === "function") {
-          window.gtag("event", "generate_lead", { event_category: "contact_form", event_label: "quote_request" });
-        }
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        throw new Error("Failed");
-      }
-    } catch {
-      setStatus("error");
-      showToast("Something went wrong. Please try again.");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
-  };
+  const { status, errors, validateField, handleSubmit } = useContactForm();
 
   return (
     <section className="contact-form-section" id="contact-form">

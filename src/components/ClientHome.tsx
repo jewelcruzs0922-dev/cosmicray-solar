@@ -1,23 +1,26 @@
 "use client";
 
 import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { SectionErrorBoundary } from "@/components/SectionErrorBoundary";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroSection from "@/components/home/HeroSection";
 import CertMarquee from "@/components/home/CertMarquee";
-import SolutionsGrid from "@/components/home/SolutionsGrid";
-import StatsSection from "@/components/home/StatsSection";
-import ShopSection from "@/components/home/ShopSection";
-import ProcessSteps from "@/components/home/ProcessSteps";
-import ResultsSection from "@/components/home/ResultsSection";
-import AboutPreview from "@/components/home/AboutPreview";
-import FinancingSection from "@/components/home/FinancingSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import FaqSection from "@/components/home/FaqSection";
-import SavingsCalculator from "@/components/home/SavingsCalculator";
-import ContactFormSection from "@/components/home/ContactFormSection";
-import NewsletterSection from "@/components/home/NewsletterSection";
-import CtaSection from "@/components/home/CtaSection";
+
+// Lazy-load below-fold sections for better initial load
+const SolutionsGrid = dynamic(() => import("@/components/home/SolutionsGrid"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "400px", margin: "0 var(--space-6)" }} /> });
+const StatsSection = dynamic(() => import("@/components/home/StatsSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "200px", margin: "0 var(--space-6)" }} /> });
+const ShopSection = dynamic(() => import("@/components/home/ShopSection"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "500px", margin: "0 var(--space-6)" }} /> });
+const ProcessSteps = dynamic(() => import("@/components/home/ProcessSteps"), { loading: () => <div className="skeleton skeleton--card" style={{ height: "300px", margin: "0 var(--space-6)" }} /> });
+const ResultsSection = dynamic(() => import("@/components/home/ResultsSection"));
+const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"));
+const FinancingSection = dynamic(() => import("@/components/home/FinancingSection"));
+const TestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"));
+const FaqSection = dynamic(() => import("@/components/home/FaqSection"));
+const SavingsCalculator = dynamic(() => import("@/components/home/SavingsCalculator"));
+const ContactFormSection = dynamic(() => import("@/components/home/ContactFormSection"));
+const NewsletterSection = dynamic(() => import("@/components/home/NewsletterSection"));
+const CtaSection = dynamic(() => import("@/components/home/CtaSection"));
 
 export default function ClientHome() {
   useEffect(() => {
