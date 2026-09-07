@@ -66,14 +66,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* Dropdown chevron only on Resources button */
 .header__nav-list>li>button::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform var(--duration) var(--ease);opacity:0.5;margin-left:2px}
 /* Book Now button in nav */
-.header__book-btn{margin-left:var(--space-3);padding:8px 22px;font-size:var(--text-xs);font-weight:700;letter-spacing:0.03em;color:white;background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-accent) 100%);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:6px;text-decoration:none;position:relative;overflow:hidden;transition:all 0.3s var(--ease);box-shadow:0 2px 8px rgba(22,120,72,0.25);animation:bookPulse 3s ease-in-out infinite}
-.header__book-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%);opacity:0;transition:opacity 0.3s ease}
-.header__book-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 6px 20px rgba(22,120,72,0.4);color:white}
-.header__book-btn:hover::before{opacity:1}
-.header__book-btn:active{transform:translateY(0) scale(0.98);box-shadow:0 2px 8px rgba(22,120,72,0.25)}
-.header__book-btn svg{transition:transform 0.3s var(--ease)}
-.header__book-btn:hover svg{transform:scale(1.1)}
-@keyframes bookPulse{0%,100%{box-shadow:0 2px 8px rgba(22,120,72,0.25)}50%{box-shadow:0 2px 16px rgba(22,120,72,0.4),0 0 0 4px rgba(22,120,72,0.08)}}
+.header__book-btn{margin-left:var(--space-3);padding:8px 20px;font-size:var(--text-sm);font-weight:600;color:white;background:var(--color-primary);border-radius:var(--radius-md);text-decoration:none;transition:all var(--duration) var(--ease)}
+.header__book-btn:hover{background:var(--color-text);transform:translateY(-1px)}
+.header__book-btn:active{transform:translateY(0)}
 /* DROPDOWN */
 .nav-dropdown{position:relative}
 .nav-dropdown__menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-2);min-width:220px;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transition:all 0.25s var(--ease);z-index:100}
