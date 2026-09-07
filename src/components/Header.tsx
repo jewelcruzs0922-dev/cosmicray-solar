@@ -30,6 +30,8 @@ export default function Header() {
       const headerH = 80;
       const y = el.getBoundingClientRect().top + window.scrollY - headerH;
       window.scrollTo({ top: y, behavior: "smooth" });
+    } else {
+      window.location.href = `/#${id}`;
     }
   }, [closeAll]);
 
