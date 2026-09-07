@@ -1297,7 +1297,8 @@ input[type="checkbox"]:checked,input[type="radio"]:checked{
 .quote-estimator__header .subheading{margin:0 auto}
 .quote-estimator__split{display:grid;grid-template-columns:1fr;gap:var(--space-8)}
 @media(min-width:768px){.quote-estimator__split{grid-template-columns:1fr 1fr}}
-.quote-estimator__inputs{background:var(--color-white);border-radius:var(--radius-2xl);padding:var(--space-8);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:var(--space-6)}
+.quote-estimator__inputs{background:var(--color-white);border-radius:var(--radius-2xl);padding:var(--space-8);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:var(--space-6);justify-content:space-between}
+.quote-estimator__inputs .btn{margin-top:auto}
 .qe-input label{display:block;font-size:var(--text-sm);font-weight:600;color:var(--color-heading);margin-bottom:var(--space-2)}
 .qe-input input[type="text"],.qe-input select{width:100%;padding:12px 16px;border:1.5px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text);background:var(--color-white);transition:border-color var(--duration) var(--ease)}
 .qe-input input[type="text"]:focus,.qe-input select:focus{outline:none;border-color:var(--color-primary)}
@@ -1316,7 +1317,8 @@ input[type="checkbox"]:checked,input[type="radio"]:checked{
 .qe-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
 .qe-slider::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--color-white);cursor:pointer;border:3px solid var(--color-primary);box-shadow:var(--shadow-md)}
 .qe-slider-labels{display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-muted)}
-.quote-estimator__results{background:var(--color-primary);border-radius:var(--radius-2xl);padding:var(--space-8);color:white;display:flex;flex-direction:column;gap:var(--space-6)}
+.quote-estimator__results{background:var(--color-primary);border-radius:var(--radius-2xl);padding:var(--space-8);color:white;display:flex;flex-direction:column;gap:var(--space-6);justify-content:space-between}
+.quote-estimator__results .btn{margin-top:auto}
 .qe-results__header{display:flex;align-items:center;justify-content:space-between}
 .qe-results__label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;opacity:0.7}
 .qe-results__system{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:var(--radius-full)}
