@@ -17,7 +17,7 @@ export default function Error({
         <p className="subheading">
           We encountered an unexpected error. Please try again or contact us if the problem persists.
         </p>
-        <div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center", flexWrap: "wrap" }}>
+        <div className="error-page__actions">
           <button className="btn btn--primary btn--large" onClick={reset}>
             Try Again
           </button>

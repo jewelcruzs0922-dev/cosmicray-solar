@@ -248,7 +248,7 @@ export default function FinancingPage() {
             Get a free quote today and discover which financing option is right
             for you. Start saving with solar — $0 down available.
           </p>
-          <div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="city-cta__actions">
             <Link href="/#contact-form" className="btn btn--accent btn--large">
               Get Free Quote
             </Link>
