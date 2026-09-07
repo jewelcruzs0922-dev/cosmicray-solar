@@ -8,6 +8,7 @@ import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
 import ExitPopup from "@/components/ExitPopup";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import { ToastProvider } from "@/components/Toast";
 import CartProvider from "@/components/CartContext";
 import PageTransition from "@/components/PageTransition";
@@ -99,6 +100,7 @@ export default function RootLayout({
             <CookieBanner />
             <ExitPopup />
             <AnalyticsLoader />
+            <ServiceWorkerRegistration />
             {process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID && process.env.NEXT_PUBLIC_TAWK_WIDGET_ID && (
               <Script
                 id="tawk-to"
