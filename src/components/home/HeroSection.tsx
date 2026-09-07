@@ -79,11 +79,11 @@ export default function HeroSection() {
             Now serving nationwide
           </motion.div>
           <h1 className="hero__title">
-            <motion.span className="hero__title-line" custom={1} variants={fadeUp} initial="hidden" animate="visible">Power Your</motion.span>
+            <motion.span className="hero__title-line hero__title-line--small" custom={1} variants={fadeUp} initial="hidden" animate="visible">Solar energy for</motion.span>
             <motion.span className="hero__title-line" custom={2} variants={fadeUp} initial="hidden" animate="visible">
-              Home <em className="hero__title-accent">With the</em>
+              your <em className="hero__title-accent">home</em>
             </motion.span>
-            <motion.span className="hero__title-line hero__title-line--accent" custom={3} variants={fadeUp} initial="hidden" animate="visible">Sun</motion.span>
+            <motion.span className="hero__title-line hero__title-line--accent" custom={3} variants={fadeUp} initial="hidden" animate="visible">your future</motion.span>
           </h1>
           <motion.p className="hero__subtitle" custom={4} variants={fadeUp} initial="hidden" animate="visible">
             Professional solar installations that cut your electricity bills by up to 75%. We handle everything — from permits to net metering setup.
