@@ -66,9 +66,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 /* Dropdown chevron only on Resources button */
 .header__nav-list>li>button::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform var(--duration) var(--ease);opacity:0.5;margin-left:2px}
 /* Book Now button in nav */
-.header__book-btn{margin-left:var(--space-3);padding:10px 32px;font-size:var(--text-sm);font-weight:600;color:var(--color-accent);border:1.5px solid var(--color-accent);border-radius:var(--radius-full);text-decoration:none;position:relative;overflow:hidden;z-index:1;transition:color 0.3s var(--ease)}
+.header__book-btn{margin-left:var(--space-3);padding:12px 28px;font-size:var(--text-sm);font-weight:600;color:var(--color-text);border:2px solid var(--color-border);border-radius:var(--radius-md);text-decoration:none;position:relative;overflow:hidden;z-index:1;transition:all var(--duration) var(--ease)}
 .header__book-btn::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:var(--color-accent);z-index:-1;transition:width 0.3s var(--ease)}
-.header__book-btn:hover{color:var(--color-dark)}
+.header__book-btn:hover{border-color:var(--color-accent);color:var(--color-dark)}
 .header__book-btn:hover::before{width:100%}
 /* DROPDOWN */
 .nav-dropdown{position:relative}
