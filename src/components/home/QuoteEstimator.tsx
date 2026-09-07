@@ -45,7 +45,7 @@ export default function QuoteEstimator() {
         <div className="quote-estimator__header">
           <span className="label">Instant Estimate</span>
           <h2 className="heading-xl">See Your Savings in Real Time</h2>
-          <p className="subheading">Adjust the slider and watch your numbers change instantly.</p>
+          <p className="subheading" style={{ textAlign: "center" }}>Adjust the slider and watch your numbers change instantly.</p>
         </div>
 
         <div className="quote-estimator__split">
