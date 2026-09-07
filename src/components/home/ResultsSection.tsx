@@ -19,9 +19,6 @@ export default function ResultsSection() {
           <Image src="https://images.pexels.com/photos/35425754/pexels-photo-35425754.jpeg" alt="Aerial view of solar panel grid on rooftop" width={600} height={400} sizes="(max-width: 1024px) 100vw, 600px" loading="lazy" />
         </div>
       </div>
-      <div className="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60C240 0 480 120 720 60C960 0 1200 120 1440 60V120H0V60Z" fill="var(--color-surface)" /></svg>
-      </div>
     </section>
   );
 }
