@@ -19,7 +19,7 @@ const videos: VideoItem[] = [
     location: "Phoenix, AZ",
     quote: "We slept through a 6-hour outage while our neighbors were in the dark.",
     thumbnail: "https://images.pexels.com/photos/37083400/pexels-photo-37083400.jpeg",
-    videoId: "dQw4w9WgXcQ",
+    videoId: "KjHZs1e0UVQ",
   },
   {
     id: "johnson-family",
@@ -27,7 +27,7 @@ const videos: VideoItem[] = [
     location: "Austin, TX",
     quote: "Our bill went from $310 to $18. Best decision we ever made.",
     thumbnail: "https://images.pexels.com/photos/9799737/pexels-photo-9799737.jpeg",
-    videoId: "L_LUpnjgPso",
+    videoId: "X4wU-xY3POw",
   },
   {
     id: "greenleaf-cafe",

@@ -34,7 +34,6 @@ export function useNewsletterForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
-        setTimeout(() => setStatus("idle"), 3000);
       } else {
         throw new Error("Failed");
       }

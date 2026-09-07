@@ -64,13 +64,11 @@ export function useContactForm() {
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
           window.gtag("event", "generate_lead", { event_category: "contact_form", event_label: "quote_request" });
         }
-        setTimeout(() => setStatus("idle"), 4000);
       } else {
         throw new Error("Failed");
       }
     } catch {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
     }
   }, []);
 

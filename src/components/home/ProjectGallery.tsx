@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { projects } from "@/data/projects";
 
 type Filter = "all" | "residential" | "commercial";
@@ -88,12 +87,6 @@ export default function ProjectGallery() {
                     <span className="project-card__stat-label">Monthly Bill</span>
                   </div>
                 </div>
-                <Link
-                  href={`/projects/${project.id}`}
-                  className="btn btn--small btn--outline"
-                >
-                  View Details &rarr;
-                </Link>
               </div>
             </article>
           ))}
