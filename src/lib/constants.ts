@@ -1,7 +1,7 @@
 export const SITE_URL = "https://www.cosmicray.com";
 export const SITE_NAME = "Cosmic Ray Solar";
 export const PHONE = "(555) 123-4567";
-export const PHONE_LINK = "+1555123456";
+export const PHONE_LINK = "+15551234567";
 export const EMAIL = "info@cosmicray.com";
 export const ADDRESS = {
   street: "123 Solar Avenue",

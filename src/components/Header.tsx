@@ -106,6 +106,7 @@ export default function Header() {
               </li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/about">About</Link></li>
+              <li><Link href="/schedule" className="btn btn--primary btn--small">Book Now</Link></li>
             </ul>
           </nav>
 
