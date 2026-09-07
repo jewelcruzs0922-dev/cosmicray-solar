@@ -46,7 +46,7 @@ export default function Footer() {
               <li><Link href="/case-studies">Case Studies</Link></li>
               <li><Link href="/service-areas">Service Areas</Link></li>
               <li><Link href="/#faq">FAQ</Link></li>
-              <li><Link href="/#calculator">Savings Calculator</Link></li>
+              <li><Link href="/schedule">Savings Calculator</Link></li>
             </ul>
           </div>
           <div>
@@ -54,8 +54,8 @@ export default function Footer() {
             <ul>
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/#how-it-works">Our Process</Link></li>
-              <li><Link href="/#financing">Financing</Link></li>
-              <li><Link href="/#testimonials">Reviews</Link></li>
+              <li><Link href="/financing">Financing</Link></li>
+              <li><Link href="/schedule">Reviews</Link></li>
             </ul>
           </div>
           <div>

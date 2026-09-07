@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/components/CartContext";
 import Logo from "@/components/Logo";
@@ -11,6 +12,7 @@ import { PHONE, PHONE_LINK } from "@/lib/constants";
 
 export default function Header() {
   const { cartCount } = useCart();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -31,7 +33,7 @@ export default function Header() {
       const y = el.getBoundingClientRect().top + window.scrollY - headerH;
       window.scrollTo({ top: y, behavior: "smooth" });
     } else {
-      window.location.href = `/#${id}`;
+      router.push(`/#${id}`);
     }
   }, [closeAll]);
 

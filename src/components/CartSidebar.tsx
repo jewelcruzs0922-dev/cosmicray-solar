@@ -70,7 +70,7 @@ export default function CartSidebar({ open, onClose }: CartSidebarProps) {
               <span>Total</span>
               <span>${cartTotal.toLocaleString()}</span>
             </div>
-            <Link href="/#contact-form" className="btn btn--primary btn--full" id="checkout-btn" onClick={onClose}>Proceed to Checkout</Link>
+            <Link href="/schedule" className="btn btn--primary btn--full" id="checkout-btn" onClick={onClose}>Proceed to Checkout</Link>
             <button className="btn btn--ghost btn--full" type="button" onClick={clearCart}>Clear Cart</button>
           </div>
         )}

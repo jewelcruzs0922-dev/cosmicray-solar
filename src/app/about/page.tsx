@@ -544,7 +544,7 @@ export default function AboutPage() {
               Get Free Quote
             </Link>
             <a
-              href={PHONE_LINK}
+              href={`tel:${PHONE_LINK}`}
               className="btn btn--outline btn--large"
             >
               Call {PHONE}

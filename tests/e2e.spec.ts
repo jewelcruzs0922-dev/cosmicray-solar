@@ -18,14 +18,14 @@ test.describe("Homepage", () => {
   });
 
   test("contact form is present", async ({ page }) => {
-    await page.goto("/");
-    const form = page.locator("#contact-form");
+    await page.goto("/contact");
+    const form = page.locator(".contact-form");
     await expect(form).toBeVisible();
   });
 
   test("product shop has items", async ({ page }) => {
     await page.goto("/");
-    const products = page.locator(".product-card");
+    const products = page.locator(".shop__slide");
     await expect(products.first()).toBeVisible();
   });
 });
@@ -39,10 +39,10 @@ test.describe("Contact Form", () => {
 
   test("validates email format", async ({ page }) => {
     await page.goto("/contact");
-    await page.fill("#contact-name", "Test User");
-    await page.fill("#contact-email", "invalid-email");
-    await page.fill("#contact-phone", "555-1234");
-    await page.fill("#contact-message", "This is a test message that is long enough.");
+    await page.fill("#name", "Test User");
+    await page.fill("#email", "invalid-email");
+    await page.fill("#phone", "555-1234");
+    await page.fill("#message", "This is a test message that is long enough.");
     await page.click('button[type="submit"]');
     await expect(page.locator(".form-error-text").first()).toBeVisible();
   });

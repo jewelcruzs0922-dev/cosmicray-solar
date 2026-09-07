@@ -103,7 +103,7 @@ export default function ServiceAreasPage() {
             <p className="subheading" style={{ margin: "0 auto" }}>
               We&apos;re expanding rapidly. Don&apos;t see your city?{" "}
               <Link
-                href="/#contact-form"
+                href="/schedule"
                 style={{
                   color: "var(--color-primary)",
                   textDecoration: "underline",
@@ -497,7 +497,7 @@ export default function ServiceAreasPage() {
             Contact us to check if we serve your area. We add new cities every
             month.
           </p>
-          <Link href="/#contact-form" className="btn btn--primary btn--large">
+          <Link href="/schedule" className="btn btn--primary btn--large">
             Check My Area →
           </Link>
         </div>

@@ -22,7 +22,7 @@ export default function NotFound() {
           <Link href="/" className="btn btn--primary btn--large">
             Go Home
           </Link>
-          <Link href="/#contact-form" className="btn btn--ghost btn--large">
+          <Link href="/schedule" className="btn btn--ghost btn--large">
             Contact Us
           </Link>
         </div>

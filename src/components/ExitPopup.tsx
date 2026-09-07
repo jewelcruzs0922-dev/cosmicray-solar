@@ -81,7 +81,7 @@ export default function ExitPopup() {
           <div className="exit-popup__stat"><strong>30%</strong><span>Federal Tax Credit</span></div>
           <div className="exit-popup__stat"><strong>6.2 yrs</strong><span>Avg. Payback</span></div>
         </div>
-        <Link href="/#contact-form" className="btn btn--primary btn--large btn--full" onClick={close}>Claim My Free Assessment</Link>
+        <Link href="/schedule" className="btn btn--primary btn--large btn--full" onClick={close}>Claim My Free Assessment</Link>
         <p className="exit-popup__fine">No spam. No sharing your info. Just a free, honest assessment.</p>
       </div>
     </div>
