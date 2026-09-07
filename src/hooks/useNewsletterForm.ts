@@ -18,7 +18,6 @@ export function useNewsletterForm() {
     const result = newsletterSchema.safeParse({ email });
     if (!result.success) {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
       return;
     }
 

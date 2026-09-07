@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p>&copy; 2012&ndash;2026 {SITE_NAME}. All rights reserved. CA License #SLC-847291</p>
+        <p>&copy; 2012&ndash;{new Date().getFullYear()} {SITE_NAME}. All rights reserved. CA License #SLC-847291</p>
         <div className="footer__legal">
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
