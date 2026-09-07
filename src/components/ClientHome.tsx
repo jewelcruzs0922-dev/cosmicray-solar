@@ -55,12 +55,12 @@ export default function ClientHome() {
       <SectionErrorBoundary name="Certifications"><CertMarquee /></SectionErrorBoundary>
       <SectionErrorBoundary name="Solutions"><AnimatedSection><SolutionsGrid /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="Statistics"><AnimatedSection><StatsSection /></AnimatedSection></SectionErrorBoundary>
+      <SectionErrorBoundary name="Shop"><AnimatedSection><ShopSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="Process"><AnimatedSection><ProcessSteps /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="Results"><AnimatedSection><ResultsSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="Reviews"><AnimatedSection><ReviewsSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="QuoteEstimator"><AnimatedSection><QuoteEstimator /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="FAQ"><AnimatedSection><FaqSection /></AnimatedSection></SectionErrorBoundary>
-      <SectionErrorBoundary name="Shop"><AnimatedSection><ShopSection /></AnimatedSection></SectionErrorBoundary>
       <SectionErrorBoundary name="CTA"><AnimatedSection><CtaSection /></AnimatedSection></SectionErrorBoundary>
     </>
   );
