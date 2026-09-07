@@ -251,6 +251,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .hero__title-line--mega{font-size:clamp(5rem,4rem + 8vw,12rem);font-weight:800;letter-spacing:-0.06em;line-height:0.85;color:var(--color-primary);-webkit-text-stroke:0}
 .hero__title-line--accent{color:var(--color-primary);background:linear-gradient(135deg,var(--color-primary) 0%,#1a7a5c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero__title-accent{font-style:normal;color:var(--color-accent)}
+/* ── Character-by-character reveal ── */
+.char-reveal{display:inline-flex;overflow:hidden}
+.char-reveal__inner{display:inline-block;overflow:hidden}
+.char-reveal__char{display:inline-block;transform:translateY(120%) rotate(8deg);opacity:0;animation:char-drop 0.7s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes char-drop{0%{transform:translateY(120%) rotate(8deg);opacity:0}60%{transform:translateY(-8%) rotate(-2deg);opacity:1}80%{transform:translateY(3%) rotate(0.5deg)}100%{transform:translateY(0) rotate(0);opacity:1}}
+.char-reveal--accent .char-reveal__char{color:var(--color-accent)}
+.char-reveal--accent{color:var(--color-accent)}
 
 .hero__subtitle{font-size:var(--text-lg);color:var(--color-text-secondary);max-width:460px;line-height:1.7;margin-bottom:var(--space-8)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-10)}

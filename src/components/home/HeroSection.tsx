@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import MagneticButton from "@/components/MagneticButton";
 
@@ -12,26 +12,17 @@ const slides = [
   { src: "https://images.pexels.com/photos/35417742/pexels-photo-35417742.jpeg", alt: "Solar panels on rooftop during golden sunset", tag: "Golden Hour", caption: "Harvesting energy from sunrise to sunset" },
 ];
 
-const lineReveal: Variants = {
-  hidden: { y: "110%", opacity: 0 },
-  visible: (i: number) => ({
-    y: "0%",
-    opacity: 1,
-    transition: {
-      y: { delay: 0.3 + i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-      opacity: { delay: 0.3 + i * 0.15, duration: 0.01 },
-    },
-  }),
-};
-
-const fadeSlide: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: 0.8 + i * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
+function CharReveal({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) {
+  return (
+    <span className={`char-reveal ${className}`} aria-label={text}>
+      {text.split("").map((char, i) => (
+        <span key={i} className="char-reveal__inner" style={{ animationDelay: `${delay + i * 0.04}s` }}>
+          <span className="char-reveal__char">{char === " " ? "\u00A0" : char}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const [heroSlide, setHeroSlide] = useState(0);
@@ -92,17 +83,17 @@ export default function HeroSection() {
         <motion.div className="hero__content" style={{ y: contentY }}>
           <h1 className="hero__title">
             <span className="hero__title-line hero__title-line--mega">
-              <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">Go</motion.span>
+              <CharReveal text="Go" delay={0.2} />
             </span>
             <span className="hero__title-line">
-              <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">solar.</motion.span>
-              <motion.span custom={2} variants={lineReveal} initial="hidden" animate="visible" className="hero__title-accent"> Save.</motion.span>
+              <CharReveal text="solar." delay={0.5} />
+              <CharReveal text=" Save." delay={0.9} className="char-reveal--accent" />
             </span>
           </h1>
-          <motion.p className="hero__subtitle" custom={3} variants={fadeSlide} initial="hidden" animate="visible">
+          <motion.p className="hero__subtitle" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}>
             We install solar panels on homes. Most customers save $1,847 a year. We handle permits, installation, and net metering.
           </motion.p>
-          <motion.div className="hero__actions" custom={4} variants={fadeSlide} initial="hidden" animate="visible">
+          <motion.div className="hero__actions" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}>
             <MagneticButton className="btn btn--primary btn--large" href="/schedule">
               <span className="btn__text">Get your free estimate</span>
               <span className="btn__icon">
@@ -111,7 +102,7 @@ export default function HeroSection() {
             </MagneticButton>
             <a href="#how-it-works" className="btn btn--ghost btn--large">See How It Works</a>
           </motion.div>
-          <motion.div className="hero__proof" custom={5} variants={fadeSlide} initial="hidden" animate="visible">
+          <motion.div className="hero__proof" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}>
             <div className="hero__proof-avatars">
               <Image src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="" width="36" height="36" loading="eager" className="hero__proof-avatar" />
               <Image src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg" alt="" width="36" height="36" loading="eager" className="hero__proof-avatar" />
@@ -124,7 +115,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
-        <motion.div className="hero__visual" custom={3} variants={fadeSlide} initial="hidden" animate="visible" style={{ y: parallaxY }}>
+        <motion.div className="hero__visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }} style={{ y: parallaxY }}>
           <div className="hero__carousel" id="hero-carousel" role="region" aria-label="Featured solar installations" aria-roledescription="carousel"
             onMouseEnter={() => { if (timerRef.current) clearInterval(timerRef.current); }}
             onMouseLeave={() => startTimer()}
