@@ -27,6 +27,10 @@ export default function ShopSection() {
 
   return (
     <section className="shop" id="shop">
+      <div className="shop__bg-deco shop__bg-deco--1" aria-hidden="true" />
+      <div className="shop__bg-deco shop__bg-deco--2" aria-hidden="true" />
+      <div className="shop__bg-deco shop__bg-deco--3" aria-hidden="true" />
+      <div className="shop__bg-lines" aria-hidden="true" />
       <div className="shop__inner">
         <div className="shop__top">
           <div>

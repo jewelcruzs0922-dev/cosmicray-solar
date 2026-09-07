@@ -375,8 +375,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .stats__suffix{font-family:var(--font-display);font-size:var(--text-xl);font-weight:600;color:var(--color-accent)}
 .stats__label{display:block;font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2)}
 /* SHOP */
-.shop{padding:var(--space-32) 0 var(--space-24);background:var(--color-surface)}
-.shop__inner{max-width:1280px;margin:0 auto;padding:0 var(--space-6)}
+.shop{padding:var(--space-32) 0 var(--space-24);background:var(--color-surface);position:relative;overflow:hidden}
+.shop__bg-deco{position:absolute;border-radius:50%;pointer-events:none}
+.shop__bg-deco--1{width:400px;height:400px;top:-10%;right:5%;background:radial-gradient(circle,rgba(232,168,56,0.1) 0%,transparent 70%);animation:shopFloat1 15s ease-in-out infinite}
+.shop__bg-deco--2{width:300px;height:300px;bottom:10%;left:-5%;background:radial-gradient(circle,rgba(10,61,47,0.07) 0%,transparent 70%);animation:shopFloat2 18s ease-in-out infinite}
+.shop__bg-deco--3{width:250px;height:250px;top:40%;right:15%;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);animation:shopFloat3 12s ease-in-out infinite}
+@keyframes shopFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,15px)}}
+@keyframes shopFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,-20px)}}
+@keyframes shopFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(-10px,-12px)}}
+.shop__lines{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.shop__bg-lines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(10,61,47,0.02) 80px,rgba(10,61,47,0.02) 81px);z-index:0}
+.shop__inner{max-width:1280px;margin:0 auto;padding:0 var(--space-6);position:relative;z-index:1}
 /* ── Top ── */
 .shop__top{display:flex;flex-direction:column;gap:var(--space-6);margin-bottom:var(--space-10)}
 @media(min-width:768px){.shop__top{flex-direction:row;align-items:flex-end;justify-content:space-between}}
