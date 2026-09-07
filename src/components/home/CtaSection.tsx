@@ -1,16 +1,14 @@
-import Link from "next/link";
-
 export default function CtaSection() {
   return (
     <section className="cta-section">
       <div className="cta-section__noise" />
       <div className="cta-section__inner">
         <span className="label label--dark">Ready to Go Solar?</span>
-        <h2 className="heading-xl heading-xl--light">Start Saving With Solar Today</h2>
-        <p className="subheading subheading--light">Get a free, no-obligation quote and see how much you can save with solar energy.</p>
+        <h2 className="heading-xl heading-xl--light">Your roof is sitting on $46,000 in savings</h2>
+        <p className="subheading subheading--light">Get a free estimate in 15 minutes. No sales pitch — just numbers.</p>
         <div className="cta-section__actions">
-          <a href="/schedule" className="btn btn--accent btn--large">Get Free Quote</a>
-          <Link href="/about" className="btn btn--outline-light btn--large">Learn About Us</Link>
+          <a href="/schedule" className="btn btn--accent btn--large">Get your free estimate</a>
+          <a href="tel:+15551234567" className="btn btn--outline-light btn--large">Call (555) 123-4567</a>
         </div>
       </div>
     </section>

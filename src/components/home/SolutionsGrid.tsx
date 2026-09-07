@@ -16,7 +16,7 @@ export default function SolutionsGrid() {
               <span className="label label--light">Most Popular</span>
               <h3 className="heading-lg">Residential Solar</h3>
               <p>Custom rooftop systems with net metering.</p>
-              <a href="#contact-form" className="btn btn--primary btn--small">Get Started &rarr;</a>
+              <a href="/schedule" className="btn btn--primary btn--small">Get Started &rarr;</a>
             </div>
           </div>
           <div className="bento__card">
