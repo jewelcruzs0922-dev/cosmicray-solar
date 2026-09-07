@@ -90,10 +90,6 @@ export default function HeroSection() {
       </div>
       <div className="hero__inner">
         <motion.div className="hero__content" style={{ y: contentY }}>
-          <motion.div className="hero__badge" custom={0} variants={fadeSlide} initial="hidden" animate="visible">
-            <span className="hero__badge-dot" />
-            Now serving nationwide
-          </motion.div>
           <h1 className="hero__title">
             <span className="hero__title-line hero__title-line--mega">
               <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">Go</motion.span>
