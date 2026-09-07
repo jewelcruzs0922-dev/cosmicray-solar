@@ -1,154 +1,85 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { products } from "@/data/products";
 
-const categories = [
-  { name: "Panels", slug: "panels", color: "#e8a838" },
-  { name: "Batteries", slug: "batteries", color: "#16a34a" },
-  { name: "Inverters", slug: "inverters", color: "#3b82f6" },
-  { name: "Chargers", slug: "chargers", color: "#f97316" },
-  { name: "Accessories", slug: "accessories", color: "#8b5cf6" },
-];
-
-const featured = products[0];
-const secondary = products[2];
-const strip = products.slice(3, 11);
-
-function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    const rotateX = (y - 0.5) * -10;
-    const rotateY = (x - 0.5) * 10;
-    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-    card.style.setProperty("--mx", `${x * 100}%`);
-    card.style.setProperty("--my", `${y * 100}%`);
-  };
-
-  const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (card) {
-      card.style.transform = "";
-      card.style.setProperty("--mx", "50%");
-      card.style.setProperty("--my", "50%");
-    }
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      className="spc"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ animationDelay: `${index * 0.08}s` }}
-    >
-      <div className="spc__shine" />
-      <div className="spc__img">
-        <Image src={product.img} alt={product.name} width={400} height={300} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
-        {product.badge && <span className="spc__badge">{product.badge}</span>}
-      </div>
-      <div className="spc__body">
-        <span className="spc__cat">{product.category}</span>
-        <h3 className="spc__name">{product.name}</h3>
-        <div className="spc__bottom">
-          <span className="spc__price">${product.price.toLocaleString()}</span>
-          <button type="button" className="spc__cart">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+const categories = ["All", "Panels", "Batteries", "Inverters", "Chargers", "Accessories"] as const;
 
 export default function ShopSection() {
+  const [active, setActive] = useState<string>("All");
+  const filtered = active === "All" ? products.slice(0, 8) : products.filter((p) => p.category === active.toLowerCase()).slice(0, 8);
+
   return (
     <section className="shop" id="shop">
-      <div className="shop__noise" aria-hidden="true" />
-      <div className="shop__glow shop__glow--1" aria-hidden="true" />
-      <div className="shop__glow shop__glow--2" aria-hidden="true" />
-
       <div className="shop__inner">
-        <div className="shop__top">
-          <div className="shop__text">
-            <span className="label label--accent">Shop</span>
-            <h2 className="shop__title">Equip your home<br />with <em>solar</em></h2>
+        <div className="shop__header">
+          <div className="shop__header-left">
+            <span className="label">Shop</span>
+            <h2 className="heading-xl">Solar products for <em>your</em> home</h2>
           </div>
-          <div className="shop__cats">
-            {categories.map((cat) => (
-              <a key={cat.slug} href={`/shop/${cat.slug}`} className="shop__cat" style={{ "--cat-color": cat.color } as React.CSSProperties}>
-                <span className="shop__cat-dot" />
-                {cat.name}
-              </a>
-            ))}
-          </div>
+          <a href="/shop" className="shop__view-all">
+            View all {products.length} products
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+          </a>
         </div>
 
-        <div className="shop__hero">
-          <div className="shop__hero-card">
-            <Image src={featured.img} alt={featured.name} width={600} height={400} sizes="50vw" loading="lazy" />
-            <div className="shop__hero-overlay" />
-            <div className="shop__hero-content">
-              <span className="shop__hero-badge">{featured.badge}</span>
-              <h3 className="shop__hero-name">{featured.name}</h3>
-              <p className="shop__hero-desc">{featured.desc}</p>
-              <div className="shop__hero-bottom">
-                <span className="shop__hero-price">${featured.price.toLocaleString()}</span>
-                <button type="button" className="btn btn--accent btn--small">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div className="shop__hero-side">
-            <div className="shop__side-card">
-              <Image src={secondary.img} alt={secondary.name} width={300} height={200} sizes="25vw" loading="lazy" />
-              <div className="shop__side-content">
-                <span className="spc__cat">{secondary.category}</span>
-                <h4 className="shop__side-name">{secondary.name}</h4>
-                <span className="shop__side-price">${secondary.price.toLocaleString()}</span>
-              </div>
-            </div>
-            <div className="shop__stat-strip">
-              <div className="shop__stat">
-                <span className="shop__stat-num">20+</span>
-                <span className="shop__stat-label">Products</span>
-              </div>
-              <div className="shop__stat">
-                <span className="shop__stat-num">5</span>
-                <span className="shop__stat-label">Categories</span>
-              </div>
-              <div className="shop__stat">
-                <span className="shop__stat-num">Free</span>
-                <span className="shop__stat-label">Shipping</span>
-              </div>
-            </div>
-          </div>
+        <div className="shop__filters">
+          {categories.map((cat) => (
+            <button key={cat} type="button" className={`shop__filter${active === cat ? " shop__filter--active" : ""}`} onClick={() => setActive(cat)}>
+              {cat}
+            </button>
+          ))}
         </div>
 
-        <div className="shop__strip">
-          <div className="shop__strip-track">
-            {strip.map((p, i) => (
-              <ProductCard key={p.id} product={p} index={i} />
-            ))}
-          </div>
+        <div className="shop__grid">
+          {filtered.map((product) => (
+            <div className="shop-card" key={product.id}>
+              <div className="shop-card__img">
+                <Image src={product.img} alt={product.name} width={400} height={300} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" loading="lazy" />
+                {product.badge && <span className="shop-card__badge">{product.badge}</span>}
+              </div>
+              <div className="shop-card__body">
+                <span className="shop-card__cat">{product.category}</span>
+                <h3 className="shop-card__name">{product.name}</h3>
+                <p className="shop-card__desc">{product.desc}</p>
+                <div className="shop-card__footer">
+                  <span className="shop-card__price">${product.price.toLocaleString()}</span>
+                  <button type="button" className="shop-card__add">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="shop__bottom">
-          <div className="shop__bottom-inner">
-            <div className="shop__bottom-left">
-              <h3 className="shop__bottom-title">Browse our full catalog</h3>
-              <p className="shop__bottom-desc">{products.length} products across 5 categories. Free shipping on all orders. 30-day returns.</p>
+        <div className="shop__trust">
+          <div className="shop__trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            <div>
+              <strong>25-Year Warranty</strong>
+              <span>On all solar panels</span>
             </div>
-            <a href="/shop" className="btn btn--accent btn--large">
-              View all products
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-            </a>
+          </div>
+          <div className="shop__trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></svg>
+            <div>
+              <strong>Free Shipping</strong>
+              <span>On orders over $500</span>
+            </div>
+          </div>
+          <div className="shop__trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+            <div>
+              <strong>Certified Equipment</strong>
+              <span>UL Listed &amp; MCS Approved</span>
+            </div>
+          </div>
+          <div className="shop__trust-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+            <div>
+              <strong>Expert Support</strong>
+              <span>Real humans, not bots</span>
+            </div>
           </div>
         </div>
       </div>
