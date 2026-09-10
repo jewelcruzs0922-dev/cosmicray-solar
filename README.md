@@ -2,7 +2,7 @@
 
 > A full-stack solar energy company website with e-commerce, appointment scheduling, and interactive quote estimation.
 
-**Live Demo:** [cosmicraysolar.netlify.app](https://cosmicraysolar.netlify.app)
+**Live Demo:** [https://cosmicray-solar.netlify.app](https://cosmicray-solar.netlify.app)
 
 ## Overview
 
