@@ -16,7 +16,7 @@ export default function ReviewsSection() {
   const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
 
   return (
-    <section className="reviews" aria-label="Customer Reviews">
+    <section className="reviews" id="reviews" aria-label="Customer Reviews">
       <div className="reviews__bg-orb reviews__bg-orb--1" aria-hidden="true" />
       <div className="reviews__bg-orb reviews__bg-orb--2" aria-hidden="true" />
       <div className="reviews__bg-orb reviews__bg-orb--3" aria-hidden="true" />

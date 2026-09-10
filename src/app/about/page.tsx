@@ -54,10 +54,10 @@ const organizationJsonLd = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Solar Avenue",
-    addressLocality: "Sunshine City",
-    addressRegion: "CA",
-    postalCode: "90210",
+    streetAddress: "2847 Solar Drive",
+    addressLocality: "Austin",
+    addressRegion: "TX",
+    postalCode: "78701",
     addressCountry: "US",
   },
   contactPoint: {

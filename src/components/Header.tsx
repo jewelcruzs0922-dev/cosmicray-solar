@@ -8,7 +8,7 @@ import Logo from "@/components/Logo";
 import CartSidebar from "@/components/CartSidebar";
 import SearchOverlay from "@/components/SearchOverlay";
 import MobileNav from "@/components/MobileNav";
-import { PHONE, PHONE_LINK } from "@/lib/constants";
+import { PHONE, PHONE_LINK, HEADER_HEIGHT } from "@/lib/constants";
 
 export default function Header() {
   const { cartCount } = useCart();
@@ -29,13 +29,12 @@ export default function Header() {
     closeAll();
     const el = document.getElementById(id);
     if (el) {
-      const headerH = 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - headerH;
+      const y = el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
       window.scrollTo({ top: y, behavior: "smooth" });
     } else {
       router.push(`/#${id}`);
     }
-  }, [closeAll]);
+  }, [closeAll, router]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

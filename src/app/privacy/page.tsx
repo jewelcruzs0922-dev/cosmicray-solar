@@ -214,7 +214,7 @@ export default function PrivacyPage() {
             <a href={`tel:${PHONE_LINK}`}>{PHONE}</a>
           </li>
           <li>
-            <strong>Address:</strong> 123 Solar Avenue, Sunshine City, CA 90210
+            <strong>Address:</strong> 2847 Solar Drive, Austin, TX 78701
           </li>
         </ul>
       </div>
