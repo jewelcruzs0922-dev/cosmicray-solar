@@ -1,5 +1,9 @@
 # Cosmic Ray Solar
 
+[![Live](https://img.shields.io/badge/live-cosmicray--solar.netlify.app-0080C6?logo=netlify&logoColor=white)](https://cosmicray-solar.netlify.app)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)](https://github.com/jewelcruzs0922-dev/cosmicray-solar/actions)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2F6FEB)](LICENSE)
+
 A multi-page marketing site for a solar installer — built to practise production Next.js: App Router routing, SEO, accessibility, testing, and CI.
 
 **Live:** https://cosmicray-solar.netlify.app
