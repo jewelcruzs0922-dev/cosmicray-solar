@@ -33,7 +33,7 @@ test.describe("Homepage", () => {
 test.describe("Contact Form", () => {
   test("shows validation errors for empty fields", async ({ page }) => {
     await page.goto("/contact", { waitUntil: "networkidle" });
-    await page.click('button[type="submit"]');
+    await page.click('.contact-form button[type="submit"]');
     await expect(page.locator(".form-error-text").first()).toBeVisible();
   });
 
@@ -43,7 +43,7 @@ test.describe("Contact Form", () => {
     await page.fill("#email", "invalid-email");
     await page.fill("#phone", "555-1234");
     await page.fill("#message", "This is a test message that is long enough.");
-    await page.click('button[type="submit"]');
+    await page.click('.contact-form button[type="submit"]');
     await expect(page.locator(".form-error-text").first()).toBeVisible();
   });
 });

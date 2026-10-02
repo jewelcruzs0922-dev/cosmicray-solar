@@ -2,6 +2,8 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
+  // Only *.spec.ts are Playwright specs; tests/*.test.ts are Vitest unit tests.
+  testMatch: "**/*.spec.ts",
   // Visual baselines are local-only: CI has no committed baselines, so the
   // visual suite would always fail there. Functional e2e still runs in CI.
   testIgnore: process.env.CI ? "**/visual.spec.ts" : undefined,
@@ -14,6 +16,8 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
+    // System Chrome (preinstalled on GitHub runners) — no browser download needed.
+    channel: "chrome",
   },
   webServer: {
     command: "npm run dev",
