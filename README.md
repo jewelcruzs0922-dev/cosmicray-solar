@@ -14,7 +14,7 @@ A multi-page marketing site for a solar installer — built to practise producti
 - **Cart** with `localStorage` persistence and SSR-safe hydration
 - **Quote estimator** — an interactive savings calculator with roof types and three scenarios
 - **59 unit tests** (Vitest), plus a Playwright end-to-end and visual-regression suite
-- **CI** — lint + typecheck, unit tests, build, and e2e (`.github/workflows/ci.yml`)
+- **CI** — lint + typecheck, unit tests, build, and functional e2e (`.github/workflows/ci.yml`); the visual-regression spec runs locally via `npm run test:visual`
 - **Service worker** for offline caching; homepage sections are `next/dynamic` with skeleton fallbacks and wrapped in per-section error boundaries
 - **SEO** — JSON-LD, a 22-entry dynamic sitemap, and a generated Open Graph image (`opengraph-image.tsx`)
 

@@ -39,8 +39,8 @@ export async function POST(request: Request) {
         quantity: item.qty,
       })),
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.cosmicray.com"}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.cosmicray.com"}/checkout/cancel`,
+    success_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://cosmicray-solar.netlify.app"}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://cosmicray-solar.netlify.app"}/checkout/cancel`,
       metadata: { orderType: "solar_equipment" },
     });
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.cosmicray.com/sitemap.xml
+Sitemap: https://cosmicray-solar.netlify.app/sitemap.xml
