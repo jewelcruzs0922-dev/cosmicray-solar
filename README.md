@@ -8,6 +8,8 @@ A multi-page marketing site for a solar installer — built to practise producti
 
 **Live:** https://cosmicray-solar.netlify.app
 
+![The home page of the Cosmic Ray Solar site](docs/home.jpg)
+
 ## Highlights
 
 - **19 routes**, including a shop, a blog (4 posts), case studies, and service-area pages with **6 statically generated city pages**
