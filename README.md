@@ -10,6 +10,18 @@ A multi-page marketing site for a solar installer — built to practise producti
 
 ![The home page of the Cosmic Ray Solar site](docs/home.jpg)
 
+## A look around
+
+These are screenshots of the running site, not mockups.
+
+| Shop | Blog |
+| --- | --- |
+| ![The shop page with solar products](docs/shop.jpg) | ![The blog index of guides and articles](docs/blog.jpg) |
+| <sub><b>Shop</b> — solar product catalog</sub> | <sub><b>Blog</b> — guides and how-tos</sub> |
+| Case studies | Service areas |
+| ![Case studies showing real installations](docs/case-studies.jpg) | ![A city service area page for Los Angeles](docs/service-area.jpg) |
+| <sub><b>Case studies</b> — project write-ups</sub> | <sub><b>Service areas</b> — per-city coverage pages</sub> |
+
 ## Highlights
 
 - **19 routes**, including a shop, a blog (4 posts), case studies, and service-area pages with **6 statically generated city pages**
